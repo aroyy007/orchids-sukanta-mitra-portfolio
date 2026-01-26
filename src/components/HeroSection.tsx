@@ -159,28 +159,28 @@ export function HeroSection() {
               </span>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="space-y-1"
-            >
-              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.05] tracking-tight">
-                <span className="text-[#CAFF33] block">
-                  <TypewriterText 
-                    text="I'M SUKANTA MITRA"
-                    typingSpeed={80}
-                    initialDelay={1500}
-                  />
-                </span>
-              </h1>
-              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white leading-[1.05] tracking-tight">
-                VISUAL COMMUNICATION
-              </h2>
-              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white leading-[1.05] tracking-tight">
-                DESIGNER
-              </h2>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="space-y-1"
+              >
+                <h1 className="font-anton text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal leading-[1.05] tracking-tight">
+                  <span className="text-[#CAFF33] block">
+                    <TypewriterText 
+                      text="I'M SUKANTA MITRA"
+                      typingSpeed={80}
+                      initialDelay={1500}
+                    />
+                  </span>
+                </h1>
+                <h2 className="font-anton text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-[1.05] tracking-tight">
+                  VISUAL COMMUNICATION
+                </h2>
+                <h2 className="font-anton text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-[1.05] tracking-tight">
+                  DESIGNER
+                </h2>
+              </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}

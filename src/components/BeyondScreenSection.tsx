@@ -48,9 +48,9 @@ export function BeyondScreenSection() {
           <span className="text-[#CAFF33] text-sm font-semibold tracking-[0.2em] uppercase">
             LIFE & WORK
           </span>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-3">
-            BEYOND THE SCREEN
-          </h2>
+            <h2 className="font-anton text-3xl md:text-5xl font-normal text-white mt-3">
+              BEYOND THE SCREEN
+            </h2>
         </motion.div>
 
         <div className="relative">

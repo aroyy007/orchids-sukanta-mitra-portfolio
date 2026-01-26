@@ -78,87 +78,87 @@ export function LifeWorkSection() {
             <Sparkles className="w-4 h-4" />
             <span>LIFE & WORK</span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            BEYOND THE <span className="text-[#CAFF33]">SCREEN</span>
-          </h2>
-        </div>
-
-        <div className="relative mb-20">
-            <div className="flex items-center justify-center gap-4 md:gap-6 overflow-hidden py-8">
-              {getVisibleBeyondImages().map((image, idx) => {
-                const isCenter = idx === Math.floor(visibleBeyondCount / 2);
-                const distanceFromCenter = Math.abs(idx - Math.floor(visibleBeyondCount / 2));
-                const rotations = [-8, -4, 0, 4, 8];
-                const rotation = rotations[idx] || 0;
-                
-                return (
-                  <motion.div
-                    key={`${image.id}-${idx}`}
-                    className="relative flex-shrink-0"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ 
-                      opacity: 1,
-                      scale: isCenter ? 1.05 : 0.95,
-                      rotate: rotation,
-                    }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    style={{
-                      width: isCenter ? "200px" : "160px",
-                      height: isCenter ? "260px" : "220px",
-                      zIndex: visibleBeyondCount - distanceFromCenter,
-                    }}
-                  >
-                    <div 
-                      className="absolute inset-0 bg-white p-2 pb-6 shadow-xl"
-                      style={{
-                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-                      }}
-                    >
-                      <div className="relative w-full h-full overflow-hidden">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 150px, 200px"
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            <button
-              onClick={prevBeyond}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
-            >
-              <ChevronLeft className="w-5 h-5 text-white" />
-            </button>
-            <button
-              onClick={nextBeyond}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
-            >
-              <ChevronRight className="w-5 h-5 text-white" />
-            </button>
-
-            <div className="flex justify-center gap-2 mt-4">
-              {beyondScreenImages.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setBeyondIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    idx === beyondIndex ? "bg-[#CAFF33]" : "bg-white/30"
-                  }`}
-                />
-              ))}
-            </div>
+            <h2 className="font-anton text-3xl md:text-4xl lg:text-5xl font-normal text-white tracking-tight">
+              BEYOND THE <span className="text-[#CAFF33]">SCREEN</span>
+            </h2>
           </div>
 
-        <div className="text-center mb-8">
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3">
-            ON MY <span className="text-[#CAFF33]">BOOKSHELF</span>
-          </h2>
+          <div className="relative mb-20">
+              <div className="flex items-center justify-center gap-4 md:gap-6 overflow-hidden py-8">
+                {getVisibleBeyondImages().map((image, idx) => {
+                  const isCenter = idx === Math.floor(visibleBeyondCount / 2);
+                  const distanceFromCenter = Math.abs(idx - Math.floor(visibleBeyondCount / 2));
+                  const rotations = [-8, -4, 0, 4, 8];
+                  const rotation = rotations[idx] || 0;
+                  
+                  return (
+                    <motion.div
+                      key={`${image.id}-${idx}`}
+                      className="relative flex-shrink-0"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        opacity: 1,
+                        scale: isCenter ? 1.05 : 0.95,
+                        rotate: rotation,
+                      }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      style={{
+                        width: isCenter ? "200px" : "160px",
+                        height: isCenter ? "260px" : "220px",
+                        zIndex: visibleBeyondCount - distanceFromCenter,
+                      }}
+                    >
+                      <div 
+                        className="absolute inset-0 bg-white p-2 pb-6 shadow-xl"
+                        style={{
+                          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                        }}
+                      >
+                        <div className="relative w-full h-full overflow-hidden">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 150px, 200px"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={prevBeyond}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
+              >
+                <ChevronLeft className="w-5 h-5 text-white" />
+              </button>
+              <button
+                onClick={nextBeyond}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
+              >
+                <ChevronRight className="w-5 h-5 text-white" />
+              </button>
+
+              <div className="flex justify-center gap-2 mt-4">
+                {beyondScreenImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setBeyondIndex(idx)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      idx === beyondIndex ? "bg-[#CAFF33]" : "bg-white/30"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+          <div className="text-center mb-8">
+            <h2 className="font-anton text-3xl md:text-4xl lg:text-5xl font-normal text-white tracking-tight mb-3">
+              ON MY <span className="text-[#CAFF33]">BOOKSHELF</span>
+            </h2>
           <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
             The magical land where reality is suspended and imagination reigns supreme. Brace yourself for a wild ride!
           </p>

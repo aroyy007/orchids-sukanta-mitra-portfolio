@@ -78,9 +78,9 @@ export function BlogSection() {
             <Sparkles className="w-4 h-4" />
             <span>MY BLOG</span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            MY LATEST <span className="text-[#CAFF33]">BLOG</span>
-          </h2>
+            <h2 className="font-anton text-3xl md:text-4xl lg:text-5xl font-normal text-white tracking-tight">
+              MY LATEST <span className="text-[#CAFF33]">BLOG</span>
+            </h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
