@@ -108,10 +108,10 @@ function CountUpNumber({ end, suffix = "", duration = 2000 }: { end: number; suf
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen bg-[#0a1628] overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-[#000816] overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-[#1e3a5f]/60 rounded-full blur-[80px] md:blur-[120px]" />
-        <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-[#0d2847]/80 rounded-full blur-[60px] md:blur-[100px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,#003366_0%,#000816_70%)] opacity-60" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-[#0047AB]/20 rounded-full blur-[80px] md:blur-[120px]" />
       </div>
 
       <div className="absolute top-24 sm:top-32 right-8 sm:right-16 md:right-24 lg:right-32 hidden md:block">
@@ -182,14 +182,14 @@ export function HeroSection() {
                 </h2>
               </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="text-white/70 text-base sm:text-lg md:text-xl italic"
+              className="text-white/70 text-base sm:text-lg md:text-xl"
             >
               Based in South Asia.
-            </motion.p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
