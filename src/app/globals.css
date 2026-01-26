@@ -1,5 +1,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Anton';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Anton-Regular-1769458071029.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-Regular-1769458084586.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-Bold-1769458083834.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-BoldItalic-1769458083828.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-ExtraLight-1769458084092.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-ExtraLightItalic-1769458083829.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-Italic-1769458083828.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-Light-1769458083827.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-LightItalic-1769458083827.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-Medium-1769458083829.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-MediumItalic-1769458083828.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-SemiBold-1769458083826.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/Krub-SemiBoldItalic-1769458083833.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
