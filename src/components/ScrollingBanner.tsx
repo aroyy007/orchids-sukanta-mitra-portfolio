@@ -11,7 +11,7 @@ const services = [
 
 export function ScrollingBanner() {
   return (
-    <section className="relative bg-[#CAFF33] py-6 overflow-hidden">
+    <section className="relative bg-[#CAFF33] py-4 sm:py-6 overflow-hidden">
       <div className="flex whitespace-nowrap">
         <motion.div
           className="flex items-center"
@@ -25,14 +25,14 @@ export function ScrollingBanner() {
             },
           }}
         >
-          {[...services, ...services, ...services, ...services].map((service, index) => (
-            <div key={index} className="flex items-center">
-              <span className="font-heading text-xl md:text-2xl lg:text-3xl font-bold text-[#0a1628] tracking-wider px-6">
-                {service}
-              </span>
-              <span className="text-[#0a1628] text-xl mx-4">✦</span>
-            </div>
-          ))}
+            {[...services, ...services, ...services, ...services].map((service, index) => (
+              <div key={index} className="flex items-center">
+                <span className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#0a1628] tracking-wider px-3 sm:px-6" style={{ fontFamily: 'Krub, sans-serif' }}>
+                  {service}
+                </span>
+                <span className="text-[#0a1628] text-base sm:text-xl mx-2 sm:mx-4">✦</span>
+              </div>
+            ))}
         </motion.div>
       </div>
     </section>
