@@ -19,9 +19,10 @@ export default function Home() {
       <PortfolioSection />
       <CollaborationSection />
       <ExperienceSection />
-      <BeyondScreenSection />
-      <BlogSection />
+      {/* <BeyondScreenSection /> */}
       <TestimonialsSection />
+      <BlogSection />
+      
       <LifeWorkSection />
       <ContactFooter />
     </main>
