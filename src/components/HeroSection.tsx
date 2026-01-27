@@ -108,10 +108,10 @@ function CountUpNumber({ end, suffix = "", duration = 2000 }: { end: number; suf
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen bg-[#000816] overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-[#0a1628] overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,#003366_0%,#000816_70%)] opacity-60" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-[#0047AB]/20 rounded-full blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-[#1e3a5f]/60 rounded-full blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-[#0d2847]/80 rounded-full blur-[60px] md:blur-[100px]" />
       </div>
 
       <div className="absolute top-24 sm:top-32 right-8 sm:right-16 md:right-24 lg:right-32 hidden md:block">
@@ -159,37 +159,37 @@ export function HeroSection() {
               </span>
             </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="space-y-1"
-              >
-                <h1 className="font-anton text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal leading-[1.05] tracking-tight">
-                  <span className="text-[#CAFF33] block">
-                    <TypewriterText 
-                      text="I'M SUKANTA MITRA"
-                      typingSpeed={80}
-                      initialDelay={1500}
-                    />
-                  </span>
-                </h1>
-                <h2 className="font-anton text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-[1.05] tracking-tight">
-                  VISUAL COMMUNICATION
-                </h2>
-                <h2 className="font-anton text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-[1.05] tracking-tight">
-                  DESIGNER
-                </h2>
-              </motion.div>
-
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="space-y-1"
+            >
+              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.05] tracking-tight">
+                <span className="text-[#CAFF33] block">
+                  <TypewriterText 
+                    text="I'M SUKANTA MITRA"
+                    typingSpeed={80}
+                    initialDelay={1500}
+                  />
+                </span>
+              </h1>
+              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white leading-[1.05] tracking-tight">
+                VISUAL COMMUNICATION
+              </h2>
+              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white leading-[1.05] tracking-tight">
+                DESIGNER
+              </h2>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="text-white/70 text-base sm:text-lg md:text-xl"
+              className="text-white/70 text-base sm:text-lg md:text-xl italic"
             >
               Based in South Asia.
-            </motion.div>
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}

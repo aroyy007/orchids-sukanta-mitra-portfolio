@@ -9,52 +9,21 @@ import { BlogSection } from "@/components/BlogSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { LifeWorkSection } from "@/components/LifeWorkSection";
 import { ContactFooter } from "@/components/ContactFooter";
-import { FadeIn } from "@/components/ui/FadeIn";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0D0D0D]">
       <Navigation />
-      
-      <FadeIn>
-        <HeroSection />
-      </FadeIn>
-
-      <FadeIn>
-        <ScrollingBanner />
-      </FadeIn>
-
-      <FadeIn>
-        <PortfolioSection />
-      </FadeIn>
-
-      <FadeIn>
-        <CollaborationSection />
-      </FadeIn>
-
-      <FadeIn>
-        <ExperienceSection />
-      </FadeIn>
-
-      <FadeIn>
-        <BeyondScreenSection />
-      </FadeIn>
-
-      <FadeIn>
-        <BlogSection />
-      </FadeIn>
-
-      <FadeIn>
-        <TestimonialsSection />
-      </FadeIn>
-
-      <FadeIn>
-        <LifeWorkSection />
-      </FadeIn>
-
-      <FadeIn>
-        <ContactFooter />
-      </FadeIn>
+      <HeroSection />
+      <ScrollingBanner />
+      <PortfolioSection />
+      <CollaborationSection />
+      <ExperienceSection />
+      <BeyondScreenSection />
+      <BlogSection />
+      <TestimonialsSection />
+      <LifeWorkSection />
+      <ContactFooter />
     </main>
   );
 }

@@ -5,51 +5,51 @@ import { Mail, Phone, Linkedin, Instagram, Dribbble } from "lucide-react";
 
 export function ContactFooter() {
   return (
-      <footer className="bg-[#0D0D0D]">
-        {/* Tea Section */}
-        <div className="relative overflow-hidden py-10 md:py-12 px-4 md:px-8 lg:px-16 bg-white">
-          {/* Background Repeating Text */}
-          <div className="absolute inset-0 overflow-hidden select-none pointer-events-none flex flex-col justify-center">
-            <div className="whitespace-nowrap opacity-[0.03]">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div 
-                  key={i} 
-                  className="text-[60px] md:text-[90px] lg:text-[120px] font-black leading-none tracking-tighter text-[#1a2744]"
-                  style={{ fontFamily: 'Anton, sans-serif' }}
-                >
-                  LET'S CHAT OVER TEA! LET'S CHAT OVER TEA! LET'S CHAT OVER TEA!
-                </div>
-              ))}
-            </div>
-          </div>
-  
-          <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col items-start"
-            >
-              <h2 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#1a2744] leading-[0.9] tracking-tighter mb-4"
+    <footer className="bg-[#0D0D0D]">
+      {/* Tea Section */}
+      <div className="relative overflow-hidden py-24 md:py-32 px-4 md:px-8 lg:px-16 bg-white">
+        {/* Background Repeating Text */}
+        <div className="absolute inset-0 overflow-hidden select-none pointer-events-none flex flex-col justify-center">
+          <div className="whitespace-nowrap opacity-[0.03]">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div 
+                key={i} 
+                className="text-[80px] md:text-[120px] lg:text-[160px] font-black leading-none tracking-tighter text-[#1a2744]"
                 style={{ fontFamily: 'Anton, sans-serif' }}
               >
-                LET'S CHAT OVER TEA!
-              </h2>
-              <motion.a
-                href="mailto:helloatmitra@gmail.com"
-                className="text-lg md:text-xl text-[#1a2744] hover:text-[#CAFF33] transition-colors duration-300"
-                style={{ fontFamily: 'Krub, sans-serif', fontWeight: 500 }}
-                whileHover={{ x: 5 }}
-              >
-                helloatmitra@gmail.com
-              </motion.a>
-            </motion.div>
-  
-            {/* Right Visual (Tea Cups) */}
-            <div className="relative w-[180px] h-[140px] md:w-[240px] md:h-[180px] flex-shrink-0">
+                LET'S CHAT OVER TEA! LET'S CHAT OVER TEA! LET'S CHAT OVER TEA!
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-start"
+          >
+            <h2 
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-[#1a2744] leading-[0.9] tracking-tighter mb-4"
+              style={{ fontFamily: 'Anton, sans-serif' }}
+            >
+              LET'S CHAT OVER TEA!
+            </h2>
+            <motion.a
+              href="mailto:helloatmitra@gmail.com"
+              className="text-xl md:text-2xl text-[#1a2744] hover:text-[#CAFF33] transition-colors duration-300"
+              style={{ fontFamily: 'Krub, sans-serif', fontWeight: 500 }}
+              whileHover={{ x: 5 }}
+            >
+              helloatmitra@gmail.com
+            </motion.a>
+          </motion.div>
+
+          {/* Right Visual (Tea Cups) */}
+          <div className="relative w-[280px] h-[220px] md:w-[350px] md:h-[280px] flex-shrink-0">
             <svg viewBox="0 0 350 280" className="w-full h-full">
               {/* Shadows */}
               <ellipse cx="140" cy="240" rx="70" ry="10" fill="#000" opacity="0.05"/>

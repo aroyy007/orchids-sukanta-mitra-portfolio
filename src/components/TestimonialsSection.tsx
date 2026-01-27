@@ -53,9 +53,9 @@ export function TestimonialsSection() {
           <span className="text-[#CAFF33] text-sm font-semibold tracking-[0.2em] uppercase">
             TESTIMONIAL
           </span>
-            <h2 className="font-anton text-3xl md:text-5xl font-normal text-white mt-3">
-              WHAT CLIENTS SAY
-            </h2>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-3">
+            WHAT CLIENTS SAY
+          </h2>
         </motion.div>
 
         <div className="relative">

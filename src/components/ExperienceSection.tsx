@@ -73,9 +73,9 @@ export function ExperienceSection() {
           <span className="text-[#CAFF33] text-sm font-semibold tracking-[0.2em] uppercase">
             MY EXPERIENCE
           </span>
-            <h2 className="font-anton text-3xl md:text-5xl font-normal text-white mt-3">
-              MY WORK EXPERIENCE
-            </h2>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-3">
+            MY WORK EXPERIENCE
+          </h2>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">

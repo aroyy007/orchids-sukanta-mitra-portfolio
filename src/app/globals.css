@@ -170,35 +170,31 @@
   --sidebar-border: rgba(255, 255, 255, 0.08);
   --sidebar-ring: #CAFF33;
   
-    --font-heading: 'Krub', sans-serif;
-    --font-body: 'Krub', sans-serif;
-    --font-anton: 'Anton', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-  
-  @layer base {
-    * {
-      @apply border-border outline-ring/50;
-    }
-    body {
-      @apply bg-background text-foreground;
-      font-family: var(--font-body);
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: var(--font-heading);
-    }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
   }
-  
-  @layer utilities {
-    .font-heading {
-      font-family: var(--font-heading);
-    }
-    .font-body {
-      font-family: var(--font-body);
-    }
-    .font-anton {
-      font-family: var(--font-anton);
-    }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
 
 @keyframes marquee {
   0% {

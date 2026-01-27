@@ -77,9 +77,9 @@ export function PortfolioSection() {
               PROJECTS
             </span>
           </div>
-            <h2 className="font-anton text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-              MY FEATURED <span className="text-[#CAFF33]">PORTFOLIO</span>
-            </h2>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white">
+            MY FEATURED <span className="text-[#CAFF33]">PORTFOLIO</span>
+          </h2>
         </motion.div>
 
         <motion.div
