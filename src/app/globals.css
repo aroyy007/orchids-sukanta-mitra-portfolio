@@ -170,8 +170,8 @@
   --sidebar-border: rgba(255, 255, 255, 0.08);
   --sidebar-ring: #CAFF33;
   
-  --font-heading: 'Anton', sans-serif;
-  --font-body: 'Krub', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
 @layer base {

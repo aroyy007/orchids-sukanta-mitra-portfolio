@@ -14,17 +14,9 @@ const images = [
   { id: 6, src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop", alt: "Team discussion" },
 ];
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-};
-
 export function BeyondScreenSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const visibleCount = 3;
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -36,8 +28,7 @@ export function BeyondScreenSection() {
 
   const getVisibleImages = () => {
     const visible = [];
-    const count = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3;
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < visibleCount; i++) {
       const index = (currentIndex + i) % images.length;
       visible.push({ ...images[index], position: i });
     }
@@ -45,25 +36,19 @@ export function BeyondScreenSection() {
   };
 
   return (
-    <motion.section 
-      className="bg-[#0D0D0D] py-12 md:py-16 border-t border-white/5"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={sectionVariants}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section className="bg-[#0D0D0D] py-24 md:py-32 border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
+          className="text-center mb-12"
         >
           <span className="text-[#CAFF33] text-sm font-semibold tracking-[0.2em] uppercase">
             LIFE & WORK
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-normal text-white mt-3" style={{ fontFamily: 'Anton, sans-serif' }}>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-3">
             BEYOND THE SCREEN
           </h2>
         </motion.div>
@@ -71,7 +56,7 @@ export function BeyondScreenSection() {
         <div className="relative">
           <div className="overflow-hidden">
             <motion.div
-              className="flex gap-4 md:gap-6"
+              className="flex gap-6"
               initial={false}
             >
               <AnimatePresence mode="popLayout" initial={false}>
@@ -84,7 +69,7 @@ export function BeyondScreenSection() {
                     transition={{ duration: 0.5 }}
                     className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
                   >
-                    <div className="relative aspect-[3/2] rounded-xl sm:rounded-2xl overflow-hidden group">
+                    <div className="relative aspect-[3/2] rounded-2xl overflow-hidden group">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -99,28 +84,28 @@ export function BeyondScreenSection() {
             </motion.div>
           </div>
 
-          <div className="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-10">
+          <div className="flex justify-center gap-4 mt-10">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={prevSlide}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-white hover:bg-[#CAFF33] hover:border-[#CAFF33] hover:text-[#0D0D0D] transition-all duration-300"
+              className="w-12 h-12 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-white hover:bg-[#CAFF33] hover:border-[#CAFF33] hover:text-[#0D0D0D] transition-all duration-300"
               aria-label="Previous slide"
             >
-              <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
+              <ChevronLeft size={24} />
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={nextSlide}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-white hover:bg-[#CAFF33] hover:border-[#CAFF33] hover:text-[#0D0D0D] transition-all duration-300"
+              className="w-12 h-12 rounded-full bg-[#1A1A1A] border border-white/10 flex items-center justify-center text-white hover:bg-[#CAFF33] hover:border-[#CAFF33] hover:text-[#0D0D0D] transition-all duration-300"
               aria-label="Next slide"
             >
-              <ChevronRight size={20} className="sm:w-6 sm:h-6" />
+              <ChevronRight size={24} />
             </motion.button>
           </div>
 
-          <div className="flex justify-center gap-2 mt-4 sm:mt-6">
+          <div className="flex justify-center gap-2 mt-6">
             {images.map((_, index) => (
               <button
                 key={index}
@@ -134,6 +119,6 @@ export function BeyondScreenSection() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

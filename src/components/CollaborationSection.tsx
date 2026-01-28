@@ -8,15 +8,15 @@ const collaborators = [
     id: 1,
     name: "British Council",
     logo: (
-      <div className="flex items-center gap-2 sm:gap-3">
-        <div className="grid grid-cols-3 gap-0.5 sm:gap-1">
+      <div className="flex items-center gap-3">
+        <div className="grid grid-cols-3 gap-1">
           {[...Array(9)].map((_, i) => (
-            <div key={i} className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#5C2D5C]" />
+            <div key={i} className="w-3 h-3 rounded-full bg-[#5C2D5C]" />
           ))}
         </div>
         <div className="text-[#1a2744]">
-          <div className="text-sm sm:text-lg md:text-xl font-bold tracking-wide leading-tight">BRITISH</div>
-          <div className="text-sm sm:text-lg md:text-xl font-bold tracking-wide leading-tight">COUNCIL</div>
+          <div className="text-xl font-bold tracking-wide leading-tight">BRITISH</div>
+          <div className="text-xl font-bold tracking-wide leading-tight">COUNCIL</div>
         </div>
       </div>
     ),
@@ -25,8 +25,8 @@ const collaborators = [
     id: 2,
     name: "UNDRR",
     logo: (
-      <div className="flex items-center gap-2 sm:gap-3">
-        <svg width="35" height="35" viewBox="0 0 100 100" className="sm:w-[50px] sm:h-[50px] text-[#1a5a96]">
+      <div className="flex items-center gap-3">
+        <svg width="50" height="50" viewBox="0 0 100 100" className="text-[#1a5a96]">
           <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" />
           <path d="M30 70 Q50 30 70 70" fill="none" stroke="#2e8b57" strokeWidth="3" />
           <path d="M35 65 Q50 35 65 65" fill="none" stroke="#3cb371" strokeWidth="2" />
@@ -34,8 +34,8 @@ const collaborators = [
           <path d="M55 55 L50 45 L45 55 L50 50 Z" fill="#ff6347" />
         </svg>
         <div>
-          <div className="text-sm sm:text-lg md:text-xl font-bold text-[#1a5a96] tracking-wide">UNDRR</div>
-          <div className="text-[8px] sm:text-[10px] text-[#1a5a96] hidden sm:block">UN Office for Disaster Risk Reduction</div>
+          <div className="text-xl font-bold text-[#1a5a96] tracking-wide">UNDRR</div>
+          <div className="text-[10px] text-[#1a5a96]">UN Office for Disaster Risk Reduction</div>
         </div>
       </div>
     ),
@@ -44,8 +44,8 @@ const collaborators = [
     id: 3,
     name: "PAL Network",
     logo: (
-      <div className="flex items-center gap-2 sm:gap-3">
-        <svg width="35" height="35" viewBox="0 0 100 100" className="sm:w-[50px] sm:h-[50px]">
+      <div className="flex items-center gap-3">
+        <svg width="50" height="50" viewBox="0 0 100 100">
           <path d="M20 80 L50 30 L80 80 Z" fill="none" stroke="#2e8b57" strokeWidth="3" />
           <path d="M30 75 L50 40 L70 75 Z" fill="none" stroke="#3cb371" strokeWidth="2" />
           <rect x="35" y="55" width="30" height="25" fill="#f5f5dc" stroke="#daa520" strokeWidth="2" />
@@ -53,8 +53,8 @@ const collaborators = [
           <path d="M62 42 L68 48 M62 48 L68 42" stroke="#fff" strokeWidth="2" />
         </svg>
         <div>
-          <div className="text-sm sm:text-lg md:text-xl font-bold text-[#1a2744]">PAL <span className="text-[#2e8b57]">NETWORK</span></div>
-          <div className="text-[8px] sm:text-xs text-[#2e8b57] hidden sm:block">People&apos;s Action for Learning</div>
+          <div className="text-xl font-bold text-[#1a2744]">PAL <span className="text-[#2e8b57]">NETWORK</span></div>
+          <div className="text-xs text-[#2e8b57]">People&apos;s Action for Learning</div>
         </div>
       </div>
     ),
@@ -63,8 +63,8 @@ const collaborators = [
     id: 4,
     name: "United Nations Network on Migration",
     logo: (
-      <div className="flex items-center gap-2 sm:gap-3">
-        <svg width="35" height="35" viewBox="0 0 100 100" className="sm:w-[50px] sm:h-[50px] text-[#1a5a96]">
+      <div className="flex items-center gap-3">
+        <svg width="50" height="50" viewBox="0 0 100 100" className="text-[#1a5a96]">
           <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" />
           <ellipse cx="50" cy="50" rx="20" ry="45" fill="none" stroke="currentColor" strokeWidth="1" />
           <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="1" />
@@ -72,40 +72,25 @@ const collaborators = [
           <ellipse cx="50" cy="50" rx="45" ry="20" fill="none" stroke="currentColor" strokeWidth="1" />
         </svg>
         <div>
-          <div className="text-xs sm:text-sm text-[#1a5a96] leading-tight">United Nations</div>
-          <div className="text-xs sm:text-sm font-bold text-[#1a5a96] leading-tight">Network on Migration</div>
-          <div className="text-[8px] sm:text-[10px] text-[#2e8b57] italic hidden sm:block">Working Better Together</div>
+          <div className="text-sm text-[#1a5a96] leading-tight">United Nations</div>
+          <div className="text-sm font-bold text-[#1a5a96] leading-tight">Network on Migration</div>
+          <div className="text-[10px] text-[#2e8b57] italic">Working Better Together</div>
         </div>
       </div>
     ),
   },
 ];
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-};
-
 export function CollaborationSection() {
   return (
-    <motion.section 
-      className="bg-white py-8 md:py-12"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={sectionVariants}
-    >
+    <section className="bg-white py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-6 md:mb-10"
+          className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 text-[#1a2744] text-sm font-medium">
             <Sparkles className="w-4 h-4" />
@@ -118,7 +103,7 @@ export function CollaborationSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 items-center justify-items-center"
+          className="flex flex-wrap items-center justify-center gap-8 md:gap-16 lg:gap-20"
         >
           {collaborators.map((collab, index) => (
             <motion.div
@@ -134,6 +119,6 @@ export function CollaborationSection() {
           ))}
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

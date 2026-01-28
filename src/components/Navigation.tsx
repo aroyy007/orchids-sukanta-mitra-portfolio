@@ -45,8 +45,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           <motion.a
             href="#home"
-            className="text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
-            style={{ fontFamily: 'Krub, sans-serif' }}
+            className="font-heading text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
             whileHover={{ scale: 1.02 }}
           >
             SUKANTA<br />MITRA
@@ -60,7 +59,6 @@ export function Navigation() {
                 className={`text-sm font-medium transition-colors duration-300 tracking-wide relative ${
                   item.active ? "text-[#CAFF33]" : "text-white/70 hover:text-[#CAFF33]"
                 }`}
-                style={{ fontFamily: 'Krub, sans-serif' }}
                 whileHover={{ y: -2 }}
               >
                 {item.label}
@@ -83,7 +81,6 @@ export function Navigation() {
             <a
               href="mailto:helloatmitra@gmail.com"
               className="flex items-center gap-2 px-4 py-2 bg-[#CAFF33] text-[#0a1628] text-xs font-bold rounded-md hover:bg-[#CAFF33]/90 transition-colors"
-              style={{ fontFamily: 'Krub, sans-serif' }}
             >
               <Mail size={14} />
               helloatmitra@gmail.com

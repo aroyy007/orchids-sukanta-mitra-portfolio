@@ -41,12 +41,12 @@ function SkillBar({ name, percentage, color }: { name: string; percentage: numbe
   }, []);
 
   return (
-    <div ref={ref} className="space-y-2 sm:space-y-3">
+    <div ref={ref} className="space-y-3">
       <div className="flex justify-between items-center">
-        <span className="text-white/70 font-medium text-xs sm:text-sm">{name}</span>
-        <span className="text-white/50 text-xs sm:text-sm font-semibold">{percentage}%</span>
+        <span className="text-white/70 font-medium text-sm">{name}</span>
+        <span className="text-white/50 text-sm font-semibold">{percentage}%</span>
       </div>
-      <div className="h-1 sm:h-1.5 bg-white/10 rounded-full overflow-hidden">
+      <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: isVisible ? `${percentage}%` : 0 }}
@@ -59,48 +59,32 @@ function SkillBar({ name, percentage, color }: { name: string; percentage: numbe
   );
 }
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
-  }
-};
-
 export function ExperienceSection() {
   return (
-    <motion.section 
-      id="about" 
-      className="bg-[#0D0D0D] py-12 md:py-16"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={sectionVariants}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section id="about" className="bg-[#0D0D0D] py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
+          className="text-center mb-16"
         >
           <span className="text-[#CAFF33] text-sm font-semibold tracking-[0.2em] uppercase">
             MY EXPERIENCE
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-normal text-white mt-3" style={{ fontFamily: 'Anton, sans-serif' }}>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-3">
             MY WORK EXPERIENCE
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-3 sm:space-y-4"
+            className="space-y-4"
           >
             {experiences.map((exp, index) => (
               <motion.div
@@ -109,18 +93,18 @@ export function ExperienceSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex gap-4 sm:gap-6 p-4 sm:p-5 bg-[#161616] rounded-xl sm:rounded-2xl hover:bg-[#1A1A1A] transition-colors duration-300 group border border-white/5"
+                className="flex gap-6 p-5 bg-[#161616] rounded-2xl hover:bg-[#1A1A1A] transition-colors duration-300 group border border-white/5"
               >
                 <div className="flex-shrink-0">
-                  <span className="text-[#CAFF33] font-semibold text-xs sm:text-sm" style={{ fontFamily: 'Krub, sans-serif' }}>
+                  <span className="text-[#CAFF33] font-heading font-bold text-sm">
                     {exp.years}
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-sm sm:text-base font-semibold text-white group-hover:text-[#CAFF33] transition-colors" style={{ fontFamily: 'Krub, sans-serif' }}>
+                  <h3 className="font-heading text-base font-semibold text-white group-hover:text-[#CAFF33] transition-colors">
                     {exp.role}
                   </h3>
-                  <p className="text-white/50 text-xs sm:text-sm mt-1" style={{ fontFamily: 'Krub, sans-serif' }}>{exp.company}</p>
+                  <p className="text-white/50 text-sm mt-1">{exp.company}</p>
                 </div>
               </motion.div>
             ))}
@@ -131,7 +115,7 @@ export function ExperienceSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4 sm:space-y-6 bg-[#161616] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-white/5"
+            className="space-y-6 bg-[#161616] rounded-2xl p-6 md:p-8 border border-white/5"
           >
             {skills.map((skill, index) => (
               <motion.div
@@ -147,6 +131,6 @@ export function ExperienceSection() {
           </motion.div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

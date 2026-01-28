@@ -12,7 +12,7 @@ import { ContactFooter } from "@/components/ContactFooter";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0D0D0D]">
+    <main className="min-h-screen">
       <Navigation />
       <HeroSection />
       <ScrollingBanner />
