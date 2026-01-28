@@ -65,7 +65,7 @@ export function BlogSection() {
   };
 
   return (
-    <section id="blog" className="bg-[#0f1729] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section id="blog" className="bg-[#0f1729] py-10 sm:py-12 md:py-14 lg:py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -127,9 +127,8 @@ export function BlogSection() {
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx * visibleCount)}
-              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${
-                Math.floor(currentIndex / visibleCount) === idx ? "bg-[#CAFF33]" : "bg-white/30"
-              }`}
+              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-colors ${Math.floor(currentIndex / visibleCount) === idx ? "bg-[#CAFF33]" : "bg-white/30"
+                }`}
               aria-label={`Go to page ${idx + 1}`}
             />
           ))}

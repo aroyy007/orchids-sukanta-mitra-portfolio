@@ -61,7 +61,7 @@ function SkillBar({ name, percentage, color }: { name: string; percentage: numbe
 
 export function ExperienceSection() {
   return (
-    <section id="about" className="bg-[#0D0D0D] py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
+    <section id="about" className="bg-[#0D0D0D] py-10 sm:py-12 md:py-16 lg:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

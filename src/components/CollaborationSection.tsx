@@ -83,14 +83,14 @@ const collaborators = [
 
 export function CollaborationSection() {
   return (
-    <section className="bg-white py-10 sm:py-12 md:py-16 overflow-hidden">
+    <section className="bg-white py-6 sm:py-8 md:py-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 sm:mb-10"
+          className="text-center mb-5 sm:mb-6"
         >
           <div className="inline-flex items-center gap-2 text-[#1a2744] text-xs sm:text-sm font-medium">
             <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -103,7 +103,7 @@ export function CollaborationSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12 lg:gap-16"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12"
         >
           {collaborators.map((collab, index) => (
             <motion.div
@@ -114,7 +114,7 @@ export function CollaborationSection() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="flex items-center justify-center"
             >
-              <div className="scale-90 sm:scale-100">
+              <div className="scale-75 sm:scale-85 md:scale-90 lg:scale-100">
                 {collab.logo}
               </div>
             </motion.div>

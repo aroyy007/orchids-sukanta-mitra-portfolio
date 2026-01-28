@@ -60,7 +60,7 @@ export function PortfolioSection() {
     : projects.filter((p) => p.filterCategory === activeFilter);
 
   return (
-    <section id="portfolio" className="bg-[#020b1a] py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden">
+    <section id="portfolio" className="bg-[#020b1a] py-10 sm:py-12 md:py-16 lg:py-18 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -71,7 +71,7 @@ export function PortfolioSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-3">
             <svg width="12" height="12" className="sm:w-[14px] sm:h-[14px]" viewBox="0 0 60 60" fill="none">
-              <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33"/>
+              <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33" />
             </svg>
             <span className="font-krub text-[#CAFF33] text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase">
               PROJECTS
@@ -93,11 +93,10 @@ export function PortfolioSection() {
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`font-krub text-xs sm:text-sm font-medium transition-all duration-300 relative whitespace-nowrap px-2 py-1 ${
-                activeFilter === category
+              className={`font-krub text-xs sm:text-sm font-medium transition-all duration-300 relative whitespace-nowrap px-2 py-1 ${activeFilter === category
                   ? "text-[#CAFF33]"
                   : "text-white/50 hover:text-white"
-              }`}
+                }`}
             >
               {category}
               {activeFilter === category && (
@@ -137,7 +136,7 @@ export function PortfolioSection() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
-                  
+
                   <div className="bg-[#CAFF33] p-4 sm:p-5">
                     <span className="font-krub text-[#020b1a]/70 text-[9px] sm:text-[10px] font-bold tracking-[0.15em] uppercase block mb-2">
                       {project.category}

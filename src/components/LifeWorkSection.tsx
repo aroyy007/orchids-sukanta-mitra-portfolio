@@ -55,7 +55,7 @@ export function LifeWorkSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-[#1a2744]">
+    <section className="py-10 sm:py-12 md:py-16 bg-[#1a2744]">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 text-[#CAFF33] text-sm font-medium mb-3">
@@ -68,7 +68,7 @@ export function LifeWorkSection() {
         </div>
 
         <div className="relative mb-20 w-full" style={{ height: 'min(600px, 70vh)' }}>
-          <CircularGallery 
+          <CircularGallery
             items={beyondScreenImages}
             bend={3}
             textColor="#CAFF33"
@@ -135,9 +135,8 @@ export function LifeWorkSection() {
               <button
                 key={idx}
                 onClick={() => setBookIndex(idx)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  idx === bookIndex ? "bg-[#1a2744]" : "bg-[#1a2744]/30"
-                }`}
+                className={`w-2 h-2 rounded-full transition-colors ${idx === bookIndex ? "bg-[#1a2744]" : "bg-[#1a2744]/30"
+                  }`}
               />
             ))}
           </div>
