@@ -115,10 +115,14 @@ export function HeroSection() {
   ];
 
   return (
-    <section id="home" className="relative min-h-screen bg-[#0a1628] overflow-hidden flex flex-col">
+    <section id="home" className="relative min-h-screen bg-[#050d1d] overflow-hidden flex flex-col">
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-[#1e3a5f]/60 rounded-full blur-[80px] md:blur-[120px]" />
-        <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-[#0d2847]/80 rounded-full blur-[60px] md:blur-[100px]" />
+        {/* Main center glow - more prominent blue gradient */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[350px] sm:w-[500px] md:w-[650px] lg:w-[800px] h-[350px] sm:h-[500px] md:h-[650px] lg:h-[800px] bg-[#1a3a6e]/70 rounded-full blur-[100px] md:blur-[150px]" />
+        {/* Secondary glow for depth */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[250px] sm:w-[350px] md:w-[450px] lg:w-[550px] h-[250px] sm:h-[350px] md:h-[450px] lg:h-[550px] bg-[#0c2d5a]/80 rounded-full blur-[80px] md:blur-[120px]" />
+        {/* Top right subtle glow */}
+        <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-[#0a2040]/60 rounded-full blur-[60px] md:blur-[100px]" />
       </div>
 
       <div className="absolute top-24 sm:top-32 right-8 sm:right-16 md:right-24 lg:right-32 hidden md:block">
