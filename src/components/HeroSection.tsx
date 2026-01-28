@@ -2,16 +2,16 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Download, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import Image from "next/image";
 
-function TypewriterText({ 
-  text, 
-  typingSpeed = 80, 
+function TypewriterText({
+  text,
+  typingSpeed = 80,
   initialDelay = 0
-}: { 
-  text: string; 
-  typingSpeed?: number; 
+}: {
+  text: string;
+  typingSpeed?: number;
   initialDelay?: number;
 }) {
   const [displayText, setDisplayText] = useState("");
@@ -107,8 +107,15 @@ function CountUpNumber({ end, suffix = "", duration = 2000 }: { end: number; suf
 }
 
 export function HeroSection() {
+  const services = [
+    "GRAPHIC DESIGN",
+    "BRANDING",
+    "PUBLICATIONS",
+    "EVENT BRANDING",
+  ];
+
   return (
-    <section id="home" className="relative min-h-screen bg-[#0a1628] overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-[#0a1628] overflow-hidden flex flex-col">
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] bg-[#1e3a5f]/60 rounded-full blur-[80px] md:blur-[120px]" />
         <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-[#0d2847]/80 rounded-full blur-[60px] md:blur-[100px]" />
@@ -121,7 +128,7 @@ export function HeroSection() {
           transition={{ delay: 1, duration: 0.5 }}
         >
           <svg width="40" height="40" className="md:w-[50px] md:h-[50px] lg:w-[60px] lg:h-[60px]" viewBox="0 0 60 60" fill="none">
-            <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33"/>
+            <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33" />
           </svg>
         </motion.div>
       </div>
@@ -132,13 +139,13 @@ export function HeroSection() {
           transition={{ delay: 1.2, duration: 0.5 }}
         >
           <svg width="20" height="20" className="md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]" viewBox="0 0 60 60" fill="none">
-            <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33"/>
+            <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33" />
           </svg>
         </motion.div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 pb-8">
-        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_auto_1fr] gap-6 sm:gap-8 items-center min-h-[calc(100vh-8rem)] lg:min-h-[75vh]">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 md:pb-8 flex-1">
+        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_auto_1fr] gap-4 sm:gap-6 md:gap-8 items-center min-h-[calc(100vh-10rem)] sm:min-h-[calc(100vh-8rem)] lg:min-h-[75vh]">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -152,7 +159,7 @@ export function HeroSection() {
               className="flex items-center justify-center lg:justify-start gap-2"
             >
               <svg width="14" height="14" className="sm:w-4 sm:h-4" viewBox="0 0 60 60" fill="none">
-                <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33"/>
+                <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33" />
               </svg>
               <span className="font-krub text-[#CAFF33] text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase">
                 HEY THERE!
@@ -167,7 +174,7 @@ export function HeroSection() {
             >
               <h1 className="font-anton text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal leading-[1.05] tracking-tight">
                 <span className="text-[#CAFF33] block">
-                  <TypewriterText 
+                  <TypewriterText
                     text="I'M SUKANTA MITRA"
                     typingSpeed={80}
                     initialDelay={1500}
@@ -198,21 +205,20 @@ export function HeroSection() {
               className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-2 sm:pt-4"
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="font-krub flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-[#CAFF33] text-[#0a1628] font-bold text-xs sm:text-sm rounded-md hover:bg-[#CAFF33]/90 transition-all duration-300"
+                className="font-krub px-4 sm:px-5 py-2 sm:py-2.5 bg-[#CAFF33] text-[#0a1628] font-bold text-[10px] sm:text-xs uppercase tracking-wider border-2 border-[#CAFF33] hover:bg-transparent hover:text-[#CAFF33] transition-all duration-300"
               >
-                <Download size={14} className="sm:w-4 sm:h-4" />
                 DOWNLOAD CV
               </motion.button>
 
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="font-krub flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-white font-semibold text-xs sm:text-sm hover:text-[#CAFF33] transition-all duration-300"
+                className="font-krub flex items-center gap-2 sm:gap-3 text-white font-semibold text-[10px] sm:text-xs uppercase tracking-wider hover:text-[#CAFF33] transition-all duration-300"
               >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white/30 flex items-center justify-center">
-                  <Play size={12} className="sm:w-[14px] sm:h-[14px]" fill="white" />
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center">
+                  <Play size={10} className="sm:w-3 sm:h-3 text-[#0a1628] ml-0.5" fill="#0a1628" />
                 </div>
                 SHOW REEL
               </motion.button>
@@ -231,7 +237,7 @@ export function HeroSection() {
                 alt="Sukanta Mitra - Visual Communication Designer"
                 fill
                 className="object-contain object-bottom"
-                style={{ 
+                style={{
                   maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
                 }}
@@ -258,6 +264,33 @@ export function HeroSection() {
               <CountUpNumber end={500} suffix="+" />
               <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">PROJECTS DONE</p>
             </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scrolling Banner */}
+      <div className="relative bg-[#CAFF33] py-4 sm:py-5 md:py-6 overflow-hidden">
+        <div className="flex whitespace-nowrap">
+          <motion.div
+            className="flex items-center"
+            animate={{ x: [0, "-50%"] }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 20,
+                ease: "linear",
+              },
+            }}
+          >
+            {[...services, ...services, ...services, ...services].map((service, index) => (
+              <div key={index} className="flex items-center">
+                <span className="font-krub text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-[#0a1628] tracking-wider px-3 sm:px-4 md:px-6">
+                  {service}
+                </span>
+                <span className="text-[#0a1628] text-base sm:text-lg md:text-xl mx-2 sm:mx-4">✦</span>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>

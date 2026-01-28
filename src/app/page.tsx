@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
-import { ScrollingBanner } from "@/components/ScrollingBanner";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { CollaborationSection } from "@/components/CollaborationSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
@@ -15,7 +14,6 @@ export default function Home() {
     <main className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <ScrollingBanner />
       <PortfolioSection />
       <CollaborationSection />
       <ExperienceSection />
@@ -26,3 +24,4 @@ export default function Home() {
     </main>
   );
 }
+

@@ -2,19 +2,20 @@
 
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, Instagram, Dribbble } from "lucide-react";
+import Image from "next/image";
 
 export function ContactFooter() {
   return (
     <footer className="bg-[#0D0D0D]">
       {/* Tea Section */}
-      <div className="relative overflow-hidden py-8 sm:py-10 md:py-12 lg:py-14 px-4 sm:px-6 md:px-8 lg:px-12 bg-white">
+      <div className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#f5f5f5]">
         {/* Background Repeating Text */}
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none flex flex-col justify-center">
-          <div className="whitespace-nowrap opacity-[0.03]">
-            {[1, 2].map((i) => (
+          <div className="whitespace-nowrap opacity-[0.04]">
+            {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="font-anton text-[40px] sm:text-[60px] md:text-[80px] lg:text-[100px] font-normal leading-none tracking-tighter text-[#1a2744]"
+                className="font-anton text-[40px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] font-normal leading-tight tracking-tighter text-[#1a2744]"
               >
                 LET'S CHAT OVER TEA! LET'S CHAT OVER TEA! LET'S CHAT OVER TEA!
               </div>
@@ -22,81 +23,59 @@ export function ContactFooter() {
           </div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-8">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center md:items-start text-center md:text-left"
-          >
-            <h2
-              className="font-anton text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-[#1a2744] leading-[0.95] tracking-tighter mb-2 sm:mb-3"
+        <div className="relative z-10 max-w-5xl mx-auto">
+          {/* Main Content - Centered */}
+          <div className="flex flex-col items-center text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal text-[#1a2744] leading-[0.95] tracking-tight mb-3 sm:mb-4"
             >
               LET'S CHAT OVER TEA!
-            </h2>
+            </motion.h2>
+
             <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               href="mailto:helloatmitra@gmail.com"
-              className="font-krub text-sm sm:text-base md:text-lg lg:text-xl text-[#1a2744] hover:text-[#CAFF33] transition-colors duration-300 font-medium break-all"
-              whileHover={{ x: 5 }}
+              className="font-krub text-base sm:text-lg md:text-xl lg:text-2xl text-[#1a2744]/70 hover:text-[#1a2744] transition-colors duration-300 font-medium italic"
+              whileHover={{ scale: 1.02 }}
             >
               helloatmitra@gmail.com
             </motion.a>
-          </motion.div>
-
-          {/* Right Visual (Tea Cups) */}
-          <div className="relative w-[120px] h-[96px] sm:w-[150px] sm:h-[120px] md:w-[180px] md:h-[144px] lg:w-[220px] lg:h-[176px] flex-shrink-0">
-            <svg viewBox="0 0 350 280" className="w-full h-full">
-              {/* Shadows */}
-              <ellipse cx="140" cy="240" rx="70" ry="10" fill="#000" opacity="0.05" />
-              <ellipse cx="210" cy="245" rx="70" ry="10" fill="#000" opacity="0.05" />
-
-              {/* First Glass (Back) */}
-              <g transform="translate(40, 40) rotate(-8, 60, 100)">
-                <path d="M15 160 L25 45 Q30 32 50 32 L90 32 Q110 32 115 45 L125 160 Q128 172 113 172 L27 172 Q12 172 15 160Z" fill="#fff" stroke="#1a2744" strokeWidth="2.5" />
-                {/* Tea Level */}
-                <path d="M20 100 L120 100 L124 155 Q126 168 112 168 L28 168 Q14 168 16 155 Z" fill="#D2691E" opacity="0.9" />
-                {/* Glass reflections/lines */}
-                <line x1="45" y1="40" x2="45" y2="165" stroke="#1a2744" strokeWidth="1" opacity="0.2" />
-                <line x1="70" y1="40" x2="70" y2="165" stroke="#1a2744" strokeWidth="1" opacity="0.2" />
-                <line x1="95" y1="40" x2="95" y2="165" stroke="#1a2744" strokeWidth="1" opacity="0.2" />
-                {/* Steam */}
-                <g opacity="0.6">
-                  <path d="M50 25 Q45 10 50 0" stroke="#1a2744" strokeWidth="2" fill="none">
-                    <animate attributeName="d" values="M50 25 Q45 10 50 0;M50 25 Q55 10 50 0;M50 25 Q45 10 50 0" dur="3s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M80 25 Q85 10 80 0" stroke="#1a2744" strokeWidth="2" fill="none">
-                    <animate attributeName="d" values="M80 25 Q85 10 80 0;M80 25 Q75 10 80 0;M80 25 Q85 10 80 0" dur="4s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" />
-                  </path>
-                </g>
-              </g>
-
-              {/* Second Glass (Front) */}
-              <g transform="translate(140, 60) rotate(5, 60, 100)">
-                <path d="M15 160 L25 45 Q30 32 50 32 L90 32 Q110 32 115 45 L125 160 Q128 172 113 172 L27 172 Q12 172 15 160Z" fill="#fff" stroke="#1a2744" strokeWidth="2.5" />
-                {/* Tea Level */}
-                <path d="M20 90 L120 90 L124 155 Q126 168 112 168 L28 168 Q14 168 16 155 Z" fill="#8B4513" opacity="0.9" />
-                {/* Glass reflections/lines */}
-                <line x1="45" y1="40" x2="45" y2="165" stroke="#1a2744" strokeWidth="1" opacity="0.2" />
-                <line x1="70" y1="40" x2="70" y2="165" stroke="#1a2744" strokeWidth="1" opacity="0.2" />
-                <line x1="95" y1="40" x2="95" y2="165" stroke="#1a2744" strokeWidth="1" opacity="0.2" />
-                {/* Steam */}
-                <g opacity="0.6">
-                  <path d="M60 25 Q55 10 60 0" stroke="#1a2744" strokeWidth="2" fill="none">
-                    <animate attributeName="d" values="M60 25 Q55 10 60 0;M60 25 Q65 10 60 0;M60 25 Q55 10 60 0" dur="2.5s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M90 25 Q95 10 90 0" stroke="#1a2744" strokeWidth="2" fill="none">
-                    <animate attributeName="d" values="M90 25 Q95 10 90 0;M90 25 Q85 10 90 0;M90 25 Q95 10 90 0" dur="3.5s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0;1;0" dur="3.5s" repeatCount="indefinite" />
-                  </path>
-                </g>
-              </g>
-            </svg>
           </div>
+
+          {/* Tea Cups - Positioned Right of Center */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="absolute right-[5%] sm:right-[10%] md:right-[15%] top-1/2 -translate-y-1/2 flex items-end"
+          >
+            {/* First Tea Cup (slightly behind and rotated left) */}
+            <div className="relative w-[45px] h-[60px] sm:w-[60px] sm:h-[80px] md:w-[75px] md:h-[100px] lg:w-[90px] lg:h-[120px] -rotate-12 -mr-3 sm:-mr-4 md:-mr-6">
+              <Image
+                src="/tea.png"
+                alt="Tea cup"
+                fill
+                className="object-contain drop-shadow-lg"
+              />
+            </div>
+            {/* Second Tea Cup (front, slightly rotated right) */}
+            <div className="relative w-[50px] h-[70px] sm:w-[70px] sm:h-[95px] md:w-[90px] md:h-[120px] lg:w-[105px] lg:h-[140px] rotate-6 z-10">
+              <Image
+                src="/tea.png"
+                alt="Tea cup"
+                fill
+                className="object-contain drop-shadow-xl"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
 
@@ -204,6 +183,6 @@ export function ContactFooter() {
           </motion.div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }
