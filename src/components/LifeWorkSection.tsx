@@ -1,18 +1,21 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const CircularGallery = dynamic(() => import('./CircularGallery'), { ssr: false });
 
 const beyondScreenImages = [
-  { id: 1, src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop", alt: "Kayaking adventure" },
-  { id: 2, src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop", alt: "Marathon running" },
-  { id: 3, src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=400&fit=crop", alt: "Public speaking" },
-  { id: 4, src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop", alt: "Tech conference" },
-  { id: 5, src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop", alt: "Portrait" },
-  { id: 6, src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop", alt: "Team collaboration" },
-  { id: 7, src: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&h=400&fit=crop", alt: "Event hosting" },
+  { image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop", text: "Kayaking adventure" },
+  { image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop", text: "Marathon running" },
+  { image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop", text: "Public speaking" },
+  { image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop", text: "Tech conference" },
+  { image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop", text: "Portrait" },
+  { image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop", text: "Team collaboration" },
+  { image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop", text: "Event hosting" },
 ];
 
 const bookshelfImages = [
@@ -29,20 +32,10 @@ const bookshelfImages = [
 ];
 
 export function LifeWorkSection() {
-  const [beyondIndex, setBeyondIndex] = useState(0);
   const [bookIndex, setBookIndex] = useState(0);
   const [hoveredBook, setHoveredBook] = useState<number | null>(null);
 
-  const visibleBeyondCount = 5;
   const visibleBookCount = 7;
-
-  const nextBeyond = useCallback(() => {
-    setBeyondIndex((prev) => (prev + 1) % beyondScreenImages.length);
-  }, []);
-
-  const prevBeyond = useCallback(() => {
-    setBeyondIndex((prev) => (prev - 1 + beyondScreenImages.length) % beyondScreenImages.length);
-  }, []);
 
   const nextBook = useCallback(() => {
     setBookIndex((prev) => (prev + 1) % bookshelfImages.length);
@@ -51,15 +44,6 @@ export function LifeWorkSection() {
   const prevBook = useCallback(() => {
     setBookIndex((prev) => (prev - 1 + bookshelfImages.length) % bookshelfImages.length);
   }, []);
-
-  const getVisibleBeyondImages = () => {
-    const images = [];
-    for (let i = 0; i < visibleBeyondCount; i++) {
-      const index = (beyondIndex + i) % beyondScreenImages.length;
-      images.push({ ...beyondScreenImages[index], position: i });
-    }
-    return images;
-  };
 
   const getVisibleBooks = () => {
     const books = [];
@@ -76,90 +60,30 @@ export function LifeWorkSection() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 text-[#CAFF33] text-sm font-medium mb-3">
             <Sparkles className="w-4 h-4" />
-            <span>LIFE & WORK</span>
+            <span className="font-krub">LIFE & WORK</span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="font-anton text-3xl md:text-4xl lg:text-5xl font-normal text-white tracking-tight">
             BEYOND THE <span className="text-[#CAFF33]">SCREEN</span>
           </h2>
         </div>
 
-        <div className="relative mb-20">
-            <div className="flex items-center justify-center gap-4 md:gap-6 overflow-hidden py-8">
-              {getVisibleBeyondImages().map((image, idx) => {
-                const isCenter = idx === Math.floor(visibleBeyondCount / 2);
-                const distanceFromCenter = Math.abs(idx - Math.floor(visibleBeyondCount / 2));
-                const rotations = [-8, -4, 0, 4, 8];
-                const rotation = rotations[idx] || 0;
-                
-                return (
-                  <motion.div
-                    key={`${image.id}-${idx}`}
-                    className="relative flex-shrink-0"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ 
-                      opacity: 1,
-                      scale: isCenter ? 1.05 : 0.95,
-                      rotate: rotation,
-                    }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    style={{
-                      width: isCenter ? "200px" : "160px",
-                      height: isCenter ? "260px" : "220px",
-                      zIndex: visibleBeyondCount - distanceFromCenter,
-                    }}
-                  >
-                    <div 
-                      className="absolute inset-0 bg-white p-2 pb-6 shadow-xl"
-                      style={{
-                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-                      }}
-                    >
-                      <div className="relative w-full h-full overflow-hidden">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 150px, 200px"
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            <button
-              onClick={prevBeyond}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
-            >
-              <ChevronLeft className="w-5 h-5 text-white" />
-            </button>
-            <button
-              onClick={nextBeyond}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors z-10"
-            >
-              <ChevronRight className="w-5 h-5 text-white" />
-            </button>
-
-            <div className="flex justify-center gap-2 mt-4">
-              {beyondScreenImages.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setBeyondIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    idx === beyondIndex ? "bg-[#CAFF33]" : "bg-white/30"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+        <div className="relative mb-20 w-full" style={{ height: 'min(600px, 70vh)' }}>
+          <CircularGallery 
+            items={beyondScreenImages}
+            bend={3}
+            textColor="#CAFF33"
+            borderRadius={0.05}
+            scrollSpeed={2}
+            scrollEase={0.05}
+            font="bold 24px Krub"
+          />
+        </div>
 
         <div className="text-center mb-8">
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3">
+          <h2 className="font-anton text-3xl md:text-4xl lg:text-5xl font-normal text-white tracking-tight mb-3">
             ON MY <span className="text-[#CAFF33]">BOOKSHELF</span>
           </h2>
-          <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
+          <p className="font-krub text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
             The magical land where reality is suspended and imagination reigns supreme. Brace yourself for a wild ride!
           </p>
         </div>

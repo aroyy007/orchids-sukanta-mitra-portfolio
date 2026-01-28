@@ -43,8 +43,8 @@ function SkillBar({ name, percentage, color }: { name: string; percentage: numbe
   return (
     <div ref={ref} className="space-y-3">
       <div className="flex justify-between items-center">
-        <span className="text-white/70 font-medium text-sm">{name}</span>
-        <span className="text-white/50 text-sm font-semibold">{percentage}%</span>
+        <span className="font-krub text-white/70 font-medium text-sm">{name}</span>
+        <span className="font-krub text-white/50 text-sm font-semibold">{percentage}%</span>
       </div>
       <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
         <motion.div
@@ -61,30 +61,30 @@ function SkillBar({ name, percentage, color }: { name: string; percentage: numbe
 
 export function ExperienceSection() {
   return (
-    <section id="about" className="bg-[#0D0D0D] py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section id="about" className="bg-[#0D0D0D] py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <span className="text-[#CAFF33] text-sm font-semibold tracking-[0.2em] uppercase">
+          <span className="font-krub text-[#CAFF33] text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase">
             MY EXPERIENCE
           </span>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-3">
+          <h2 className="font-anton text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white mt-3">
             MY WORK EXPERIENCE
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="space-y-3 sm:space-y-4"
           >
             {experiences.map((exp, index) => (
               <motion.div
@@ -93,18 +93,18 @@ export function ExperienceSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex gap-6 p-5 bg-[#161616] rounded-2xl hover:bg-[#1A1A1A] transition-colors duration-300 group border border-white/5"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-6 p-4 sm:p-5 bg-[#161616] rounded-xl sm:rounded-2xl hover:bg-[#1A1A1A] transition-colors duration-300 group border border-white/5"
               >
                 <div className="flex-shrink-0">
-                  <span className="text-[#CAFF33] font-heading font-bold text-sm">
+                  <span className="font-krub text-[#CAFF33] font-bold text-xs sm:text-sm">
                     {exp.years}
                   </span>
                 </div>
-                <div>
-                  <h3 className="font-heading text-base font-semibold text-white group-hover:text-[#CAFF33] transition-colors">
+                <div className="min-w-0">
+                  <h3 className="font-krub text-sm sm:text-base font-semibold text-white group-hover:text-[#CAFF33] transition-colors">
                     {exp.role}
                   </h3>
-                  <p className="text-white/50 text-sm mt-1">{exp.company}</p>
+                  <p className="font-krub text-white/50 text-xs sm:text-sm mt-1">{exp.company}</p>
                 </div>
               </motion.div>
             ))}
@@ -115,7 +115,7 @@ export function ExperienceSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6 bg-[#161616] rounded-2xl p-6 md:p-8 border border-white/5"
+            className="space-y-5 sm:space-y-6 bg-[#161616] rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 border border-white/5"
           >
             {skills.map((skill, index) => (
               <motion.div

@@ -100,7 +100,7 @@ function CountUpNumber({ end, suffix = "", duration = 2000 }: { end: number; suf
   }, [isVisible, end, duration]);
 
   return (
-    <div ref={ref} className="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#CAFF33]">
+    <div ref={ref} className="font-krub text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#CAFF33]">
       {count.toString().padStart(2, "0")}{suffix}
     </div>
   );
@@ -154,7 +154,7 @@ export function HeroSection() {
               <svg width="14" height="14" className="sm:w-4 sm:h-4" viewBox="0 0 60 60" fill="none">
                 <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33"/>
               </svg>
-              <span className="text-[#CAFF33] text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase">
+              <span className="font-krub text-[#CAFF33] text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase">
                 HEY THERE!
               </span>
             </motion.div>
@@ -165,7 +165,7 @@ export function HeroSection() {
               transition={{ delay: 0.4 }}
               className="space-y-1"
             >
-              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.05] tracking-tight">
+              <h1 className="font-anton text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal leading-[1.05] tracking-tight">
                 <span className="text-[#CAFF33] block">
                   <TypewriterText 
                     text="I'M SUKANTA MITRA"
@@ -174,10 +174,10 @@ export function HeroSection() {
                   />
                 </span>
               </h1>
-              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white leading-[1.05] tracking-tight">
+              <h2 className="font-anton text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-[1.05] tracking-tight">
                 VISUAL COMMUNICATION
               </h2>
-              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white leading-[1.05] tracking-tight">
+              <h2 className="font-anton text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-white leading-[1.05] tracking-tight">
                 DESIGNER
               </h2>
             </motion.div>
@@ -186,7 +186,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="text-white/70 text-base sm:text-lg md:text-xl italic"
+              className="font-krub text-white/70 text-base sm:text-lg md:text-xl italic"
             >
               Based in South Asia.
             </motion.p>
@@ -200,7 +200,7 @@ export function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-[#CAFF33] text-[#0a1628] font-bold text-xs sm:text-sm rounded-md hover:bg-[#CAFF33]/90 transition-all duration-300"
+                className="font-krub flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-[#CAFF33] text-[#0a1628] font-bold text-xs sm:text-sm rounded-md hover:bg-[#CAFF33]/90 transition-all duration-300"
               >
                 <Download size={14} className="sm:w-4 sm:h-4" />
                 DOWNLOAD CV
@@ -209,7 +209,7 @@ export function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-white font-semibold text-xs sm:text-sm hover:text-[#CAFF33] transition-all duration-300"
+                className="font-krub flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-white font-semibold text-xs sm:text-sm hover:text-[#CAFF33] transition-all duration-300"
               >
                 <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-white/30 flex items-center justify-center">
                   <Play size={12} className="sm:w-[14px] sm:h-[14px]" fill="white" />
@@ -248,15 +248,15 @@ export function HeroSection() {
           >
             <div className="text-center lg:text-left">
               <CountUpNumber end={6} suffix="+" />
-              <p className="text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">YEARS OF EXPERIENCE</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">YEARS OF EXPERIENCE</p>
             </div>
             <div className="text-center lg:text-left">
               <CountUpNumber end={375} suffix="+" />
-              <p className="text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">HAPPY CLIENTS</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">HAPPY CLIENTS</p>
             </div>
             <div className="text-center lg:text-left">
               <CountUpNumber end={500} suffix="+" />
-              <p className="text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">PROJECTS DONE</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">PROJECTS DONE</p>
             </div>
           </motion.div>
         </div>

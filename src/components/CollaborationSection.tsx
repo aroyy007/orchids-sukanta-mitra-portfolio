@@ -83,18 +83,18 @@ const collaborators = [
 
 export function CollaborationSection() {
   return (
-    <section className="bg-white py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <section className="bg-white py-10 sm:py-12 md:py-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-8 sm:mb-10"
         >
-          <div className="inline-flex items-center gap-2 text-[#1a2744] text-sm font-medium">
-            <Sparkles className="w-4 h-4" />
-            <span className="uppercase tracking-wider">Collaborated With</span>
+          <div className="inline-flex items-center gap-2 text-[#1a2744] text-xs sm:text-sm font-medium">
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="font-krub uppercase tracking-wider">Collaborated With</span>
           </div>
         </motion.div>
 
@@ -103,7 +103,7 @@ export function CollaborationSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-16 lg:gap-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12 lg:gap-16"
         >
           {collaborators.map((collab, index) => (
             <motion.div
@@ -112,9 +112,11 @@ export function CollaborationSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="flex-shrink-0"
+              className="flex items-center justify-center"
             >
-              {collab.logo}
+              <div className="scale-90 sm:scale-100">
+                {collab.logo}
+              </div>
             </motion.div>
           ))}
         </motion.div>

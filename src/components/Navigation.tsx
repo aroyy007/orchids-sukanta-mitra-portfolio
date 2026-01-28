@@ -45,7 +45,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           <motion.a
             href="#home"
-            className="font-heading text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
+            className="font-krub text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
             whileHover={{ scale: 1.02 }}
           >
             SUKANTA<br />MITRA
@@ -56,7 +56,7 @@ export function Navigation() {
               <motion.a
                 key={item.label}
                 href={item.href}
-                className={`text-sm font-medium transition-colors duration-300 tracking-wide relative ${
+                className={`font-krub text-sm font-medium transition-colors duration-300 tracking-wide relative ${
                   item.active ? "text-[#CAFF33]" : "text-white/70 hover:text-[#CAFF33]"
                 }`}
                 whileHover={{ y: -2 }}
@@ -72,7 +72,7 @@ export function Navigation() {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:border-[#CAFF33] hover:text-[#CAFF33] transition-all text-xs font-bold"
+                  className="font-krub w-7 h-7 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:border-[#CAFF33] hover:text-[#CAFF33] transition-all text-xs font-bold"
                 >
                   {social.icon}
                 </a>
@@ -80,7 +80,7 @@ export function Navigation() {
             </div>
             <a
               href="mailto:helloatmitra@gmail.com"
-              className="flex items-center gap-2 px-4 py-2 bg-[#CAFF33] text-[#0a1628] text-xs font-bold rounded-md hover:bg-[#CAFF33]/90 transition-colors"
+              className="font-krub flex items-center gap-2 px-4 py-2 bg-[#CAFF33] text-[#0a1628] text-xs font-bold rounded-md hover:bg-[#CAFF33]/90 transition-colors"
             >
               <Mail size={14} />
               helloatmitra@gmail.com
@@ -113,7 +113,7 @@ export function Navigation() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`block text-lg font-medium transition-colors ${
+                  className={`font-krub block text-lg font-medium transition-colors ${
                     item.active ? "text-[#CAFF33]" : "text-white/70 hover:text-[#CAFF33]"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -124,7 +124,7 @@ export function Navigation() {
               <div className="pt-4 border-t border-white/10">
                 <a
                   href="mailto:helloatmitra@gmail.com"
-                  className="text-sm text-[#CAFF33]"
+                  className="font-krub text-sm text-[#CAFF33]"
                 >
                   helloatmitra@gmail.com
                 </a>
