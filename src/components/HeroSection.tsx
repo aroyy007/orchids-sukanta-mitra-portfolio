@@ -237,7 +237,7 @@ export function HeroSection() {
           >
             <div className="relative w-[240px] h-[320px] sm:w-[280px] sm:h-[380px] md:w-[320px] md:h-[430px] lg:w-[380px] lg:h-[500px] xl:w-[420px] xl:h-[550px]">
               <Image
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/60a7b160-09b1-41c6-95c0-7650ac8f0cf1/heroimg-1768677571195.png?width=8000&height=8000&resize=contain"
+                src="/heroimg.png"
                 alt="Sukanta Mitra - Visual Communication Designer"
                 fill
                 className="object-contain object-bottom"

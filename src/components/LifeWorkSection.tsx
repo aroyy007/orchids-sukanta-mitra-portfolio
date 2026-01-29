@@ -9,33 +9,30 @@ import dynamic from "next/dynamic";
 const CircularGallery = dynamic(() => import('./CircularGallery'), { ssr: false });
 
 const beyondScreenImages = [
-  { image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop", text: "Kayaking adventure" },
-  { image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop", text: "Marathon running" },
-  { image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop", text: "Public speaking" },
-  { image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop", text: "Tech conference" },
-  { image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop", text: "Portrait" },
-  { image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop", text: "Team collaboration" },
-  { image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop", text: "Event hosting" },
+  { image: "/BTS1.png", text: "" },
+  { image: "/BTS2.png", text: "" },
+  { image: "/BTS3.png", text: "" },
+  { image: "/BTS4.png", text: "" },
+  { image: "/BTS5.png", text: "" },
 ];
 
 const bookshelfImages = [
-  { id: 1, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1404580714i/18290401.jpg", alt: "Show Your Work" },
-  { id: 2, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1328765592i/9505449.jpg", alt: "Know Your Onions" },
-  { id: 3, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1442460745i/840.jpg", alt: "Design of Everyday Things" },
-  { id: 4, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1627068569i/44142998.jpg", alt: "Ruined by Design" },
-  { id: 5, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1407245133i/22668729.jpg", alt: "Hooked" },
-  { id: 6, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1384736554i/18197267.jpg", alt: "Don't Make Me Think" },
-  { id: 7, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1348495562i/10127019.jpg", alt: "Steal Like an Artist" },
-  { id: 8, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1387770614i/18077903.jpg", alt: "Sprint" },
-  { id: 9, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1535115320i/27220736.jpg", alt: "Atomic Habits" },
-  { id: 10, src: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1624206110i/52578297.jpg", alt: "The Mom Test" },
+  { id: 1, src: "/showyourwork.webp", alt: "Show Your Work" },
+  { id: 2, src: "/knowyouronions.jpg", alt: "Know Your Onions" },
+  { id: 3, src: "/thedesignofeverydaythings.webp", alt: "Design of Everyday Things" },
+  { id: 4, src: "/RuinedbyDesign.jpg", alt: "Ruined by Design" },
+  { id: 5, src: "/hooked.png", alt: "Hooked" },
+  { id: 6, src: "/dontmakemethink.webp", alt: "Don't Make Me Think" },
+  { id: 7, src: "/steallikeabartist.webp", alt: "Steal Like an Artist" },
+  { id: 8, src: "/sprint.png", alt: "Sprint" },
+  { id: 9, src: "/atomichabits.webp", alt: "Atomic Habits" },
 ];
 
 export function LifeWorkSection() {
   const [bookIndex, setBookIndex] = useState(0);
   const [hoveredBook, setHoveredBook] = useState<number | null>(null);
 
-  const visibleBookCount = 7;
+  const visibleBookCount = 8;
 
   const nextBook = useCallback(() => {
     setBookIndex((prev) => (prev + 1) % bookshelfImages.length);
@@ -73,8 +70,8 @@ export function LifeWorkSection() {
             bend={3}
             textColor="#CAFF33"
             borderRadius={0.05}
-            scrollSpeed={2}
-            scrollEase={0.05}
+            scrollSpeed={1.5}
+            scrollEase={0.01}
             font="bold 24px Krub"
           />
         </div>
