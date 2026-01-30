@@ -273,6 +273,45 @@
   }
 }
 
+@keyframes el1-move {
+  0% {
+    top: 108px;
+    left: 102px;
+    opacity: 1;
+  }
+  100% {
+    top: -10px;
+    left: 22px;
+    opacity: 0;
+  }
+}
+
+@keyframes el2-move {
+  0% {
+    top: 92px;
+    left: 136px;
+    opacity: 1;
+  }
+  100% {
+    top: -10px;
+    left: 108px;
+    opacity: 0;
+  }
+}
+
+@keyframes el3-move {
+  0% {
+    top: 108px;
+    left: 180px;
+    opacity: 1;
+  }
+  100% {
+    top: 28px;
+    left: 276px;
+    opacity: 0;
+  }
+}
+
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
@@ -299,6 +338,18 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-el1-move {
+  animation: el1-move 800ms linear infinite;
+}
+
+.animate-el2-move {
+  animation: el2-move 800ms linear infinite;
+}
+
+.animate-el3-move {
+  animation: el3-move 800ms linear infinite;
 }
 
 .animation-delay-100 {

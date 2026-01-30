@@ -4,10 +4,69 @@ import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import { CursorGlow } from "@/components/CursorGlow";
+import { SchemaMarkup } from "@/components/SchemaMarkup";
 
 export const metadata: Metadata = {
   title: "Sukanta Mitra | Visual Communication Designer",
   description: "Portfolio of Sukanta Mitra - Visual Communication Designer based in South Asia. Specializing in graphic design, branding, publications, and event branding.",
+  keywords: [
+    "Sukanta Mitra",
+    "Visual Communication Designer",
+    "Graphic Designer",
+    "Branding Expert",
+    "South Asia Designer",
+    "Portfolio",
+    "Event Branding",
+    "Publications Design",
+    "Creative Designer",
+    "UI/UX Designer"
+  ],
+  authors: [{ name: "Sukanta Mitra" }],
+  creator: "Sukanta Mitra",
+  publisher: "Sukanta Mitra",
+  metadataBase: new URL('https://yourdomain.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://yourdomain.com",
+    title: "Sukanta Mitra | Visual Communication Designer",
+    description: "Portfolio of Sukanta Mitra - Visual Communication Designer based in South Asia. Specializing in graphic design, branding, publications, and event branding.",
+    siteName: "Sukanta Mitra Portfolio",
+    images: [
+      {
+        url: "/heroimg.png",
+        width: 1200,
+        height: 630,
+        alt: "Sukanta Mitra - Visual Communication Designer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sukanta Mitra | Visual Communication Designer",
+    description: "Portfolio of Sukanta Mitra - Visual Communication Designer based in South Asia. Specializing in graphic design, branding, publications, and event branding.",
+    images: ["/heroimg.png"],
+    creator: "@sukantamitra",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
 };
 
 export default function RootLayout({
@@ -17,6 +76,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <SchemaMarkup />
+      </head>
       <body className="antialiased" suppressHydrationWarning>
         <CursorGlow />
         <Script
