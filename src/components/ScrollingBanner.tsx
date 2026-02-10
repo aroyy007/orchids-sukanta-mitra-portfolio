@@ -27,10 +27,10 @@ export function ScrollingBanner() {
         >
           {[...services, ...services, ...services, ...services].map((service, index) => (
             <div key={index} className="flex items-center">
-              <span className="font-krub text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-[#0a1628] tracking-wider px-4 sm:px-5 md:px-6">
+              <span className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#0a1628] px-4 md:px-8 uppercase">
                 {service}
               </span>
-              <span className="text-[#0a1628] text-base sm:text-lg md:text-xl mx-2 sm:mx-3 md:mx-4">✦</span>
+              <span className="text-[#0a1628] text-2xl sm:text-3xl md:text-4xl mx-2 md:mx-4">✦</span>
             </div>
           ))}
         </motion.div>

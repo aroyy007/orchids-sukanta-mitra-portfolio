@@ -50,14 +50,38 @@ const projects = [
     filterCategory: "PUBLICATIONS",
     image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
   },
+  {
+    id: 7,
+    title: "Brand Identity for TechFlow AI Startup",
+    category: "LOGO & BRANDING",
+    filterCategory: "LOGOS & BRANDING",
+    image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&h=400&fit=crop",
+  },
+  {
+    id: 8,
+    title: "Annual Report Design for Global NGO",
+    category: "PUBLICATION DESIGN",
+    filterCategory: "PUBLICATIONS",
+    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=400&fit=crop",
+  },
+  {
+    id: 9,
+    title: "Conference Event Branding for TechSummit 2025",
+    category: "EVENT BRANDING",
+    filterCategory: "EVENT BRANDING",
+    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop",
+  },
 ];
 
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("ALL");
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const filteredProjects = activeFilter === "ALL"
     ? projects
     : projects.filter((p) => p.filterCategory === activeFilter);
+
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
 
   return (
     <section id="portfolio" className="bg-[#020b1a] py-10 sm:py-12 md:py-16 lg:py-18 overflow-hidden">
@@ -94,8 +118,8 @@ export function PortfolioSection() {
               key={category}
               onClick={() => setActiveFilter(category)}
               className={`font-krub text-xs sm:text-sm font-medium transition-all duration-300 relative whitespace-nowrap px-2 py-1 ${activeFilter === category
-                  ? "text-[#CAFF33]"
-                  : "text-white/50 hover:text-white"
+                ? "text-[#CAFF33]"
+                : "text-white/50 hover:text-white"
                 }`}
             >
               {category}
@@ -114,7 +138,7 @@ export function PortfolioSection() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
@@ -126,7 +150,7 @@ export function PortfolioSection() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className="group cursor-pointer"
               >
-                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-[#CAFF33] hover:shadow-2xl hover:shadow-[#CAFF33]/20 transition-all duration-300">
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-transparent hover:border-[#CAFF33] hover:shadow-[0_0_30px_rgba(202,255,51,0.3)] transition-all duration-250">
                   <div className="relative aspect-[4/3] bg-[#e8e8e8]">
                     <Image
                       src={project.image}
@@ -156,22 +180,25 @@ export function PortfolioSection() {
           </AnimatePresence>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-8 sm:mt-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="font-krub inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-transparent border border-white/30 text-white text-xs sm:text-sm font-medium rounded-md hover:border-[#CAFF33] hover:text-[#CAFF33] transition-all duration-300"
+        {visibleCount < filteredProjects.length && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center mt-8 sm:mt-12"
           >
-            MORE PROJECTS
-            <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" />
-          </motion.button>
-        </motion.div>
+            <motion.button
+              onClick={() => setVisibleCount((prev) => prev + 3)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="font-krub inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-transparent border border-white/30 text-white text-xs sm:text-sm font-medium rounded-md hover:border-[#CAFF33] hover:text-[#CAFF33] transition-all duration-300"
+            >
+              MORE PROJECTS
+              <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" />
+            </motion.button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
