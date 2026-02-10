@@ -414,7 +414,7 @@ class Media {
     }
 
     this.speed = scroll.current - scroll.last;
-    
+
     // Reduce animation on reduced motion or mobile
     if (!this.reducedMotion) {
       this.program.uniforms.uTime.value += 0.04 * this.responsiveConfig.animationIntensity;
@@ -453,7 +453,7 @@ class Media {
     // Responsive scaling based on screen size
     const baseScale = this.screen.height / 1500;
     const { planeScale } = this.responsiveConfig;
-    
+
     this.scale = baseScale;
     this.plane.scale.y = (this.viewport.height * (900 * this.scale * planeScale.height)) / this.screen.height;
     this.plane.scale.x = (this.viewport.width * (700 * this.scale * planeScale.width)) / this.screen.width;
@@ -536,7 +536,7 @@ class App {
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
     this.responsiveConfig = getResponsiveConfig(window.innerWidth);
     this.reducedMotion = prefersReducedMotion();
-    
+
     // Adjust auto-rotate speed based on reduced motion preference
     if (this.reducedMotion) {
       this.autoRotateSpeed = 0.05; // Much slower for reduced motion
@@ -637,12 +637,12 @@ class App {
 
   onTouchMove(e: MouseEvent | TouchEvent) {
     if (!this.isDown) return;
-    
+
     // Prevent default on touch to avoid page scroll
     if ('touches' in e) {
       e.preventDefault();
     }
-    
+
     const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
     const touchMultiplier = this.responsiveConfig.scrollSpeed / 2;
     const distance = (this.start - x) * (touchMultiplier * 0.025);
@@ -710,7 +710,7 @@ class App {
     // Check if we should resume auto-rotation
     const timeSinceInteraction = Date.now() - this.lastInteractionTime;
     const shouldAutoRotate = !this.isDown && timeSinceInteraction > this.idleDelay;
-    
+
     // Apply auto-rotation when idle
     if (this.autoRotate && shouldAutoRotate && !this.reducedMotion) {
       this.scroll.target += this.autoRotateSpeed;
@@ -718,7 +718,7 @@ class App {
       // Very slow rotation for reduced motion users
       this.scroll.target += this.autoRotateSpeed;
     }
-    
+
     // Reset interaction flag after idle period
     if (shouldAutoRotate) {
       this.isInteracting = false;
@@ -738,7 +738,7 @@ class App {
 
   setupResizeObserver() {
     if (typeof ResizeObserver === 'undefined') return;
-    
+
     this.resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         if (entry.target === this.container) {
@@ -746,7 +746,7 @@ class App {
         }
       }
     });
-    
+
     this.resizeObserver.observe(this.container);
   }
 
@@ -768,7 +768,7 @@ class App {
     window.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
     window.addEventListener('touchmove', this.boundOnTouchMove, { passive: false });
     window.addEventListener('touchend', this.boundOnTouchUp, { passive: true });
-    
+
     // Add hover detection for auto-rotation pause
     this.container.addEventListener('mouseenter', boundOnMouseEnter);
     this.container.addEventListener('mouseleave', boundOnMouseLeave);
@@ -776,11 +776,11 @@ class App {
 
   destroy() {
     window.cancelAnimationFrame(this.raf);
-    
+
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }
-    
+
     window.removeEventListener('resize', this.boundOnResize);
     window.removeEventListener('mousewheel', this.boundOnWheel);
     window.removeEventListener('wheel', this.boundOnWheel);
@@ -842,10 +842,10 @@ export default function CircularGallery({
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, isClient]);
 
   return (
-    <div 
-      className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y" 
+    <div
+      className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y"
       ref={containerRef}
-      style={{ 
+      style={{
         WebkitOverflowScrolling: 'touch',
         touchAction: 'pan-y'
       }}

@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Mail } from "lucide-react";
 
 const navItems = [
-  { label: "HOME", href: "#home" },
-  { label: "ABOUT ME", href: "#about", active: true },
-  { label: "PORTFOLIO", href: "#portfolio" },
-  { label: "BLOG", href: "#blog" },
+  { label: "HOME", href: "#home", sectionId: "home" },
+  { label: "ABOUT ME", href: "#about", sectionId: "about" },
+  { label: "PORTFOLIO", href: "#portfolio", sectionId: "portfolio" },
+  { label: "BLOG", href: "#blog", sectionId: "blog" },
 ];
 
 const socialIcons = [
@@ -21,6 +21,7 @@ const socialIcons = [
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,21 +31,56 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // IntersectionObserver to detect active section
+  useEffect(() => {
+    const sectionIds = navItems.map((item) => item.sectionId);
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (!element) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        {
+          rootMargin: "-20% 0px -60% 0px",
+          threshold: 0,
+        }
+      );
+
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((obs) => obs.disconnect());
+    };
+  }, []);
+
+  const handleNavClick = useCallback((sectionId: string) => {
+    setActiveSection(sectionId);
+    setIsMobileMenuOpen(false);
+  }, []);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-[#0a1628]/95 backdrop-blur-md border-b border-white/5"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           <motion.a
             href="#home"
+            onClick={() => handleNavClick("home")}
             className="font-krub text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
             whileHover={{ scale: 1.02 }}
           >
@@ -56,9 +92,11 @@ export function Navigation() {
               <motion.a
                 key={item.label}
                 href={item.href}
-                className={`font-krub text-sm font-medium transition-colors duration-300 tracking-wide relative ${
-                  item.active ? "text-[#CAFF33]" : "text-white/70 hover:text-[#CAFF33]"
-                }`}
+                onClick={() => handleNavClick(item.sectionId)}
+                className={`font-krub text-sm transition-colors duration-300 tracking-wide relative ${activeSection === item.sectionId
+                    ? "text-[#CAFF33] font-bold"
+                    : "text-white/70 font-medium hover:text-[#CAFF33]"
+                  }`}
                 whileHover={{ y: -2 }}
               >
                 {item.label}
@@ -113,10 +151,11 @@ export function Navigation() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`font-krub block text-lg font-medium transition-colors ${
-                    item.active ? "text-[#CAFF33]" : "text-white/70 hover:text-[#CAFF33]"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`font-krub block text-lg transition-colors ${activeSection === item.sectionId
+                      ? "text-[#CAFF33] font-bold"
+                      : "text-white/70 font-medium hover:text-[#CAFF33]"
+                    }`}
+                  onClick={() => handleNavClick(item.sectionId)}
                 >
                   {item.label}
                 </motion.a>
