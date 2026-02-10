@@ -305,16 +305,10 @@ class Media {
         attribute vec2 uv;
         uniform mat4 modelViewMatrix;
         uniform mat4 projectionMatrix;
-        uniform float uTime;
-        uniform float uSpeed;
-        uniform float uAnimationIntensity;
         varying vec2 vUv;
         void main() {
           vUv = uv;
-          vec3 p = position;
-          float wave = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5);
-          p.z = wave * (0.1 + uSpeed * 0.5) * uAnimationIntensity;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
       `,
       fragment: `
@@ -350,10 +344,7 @@ class Media {
         tMap: { value: texture },
         uPlaneSizes: { value: [0, 0] },
         uImageSizes: { value: [0, 0] },
-        uSpeed: { value: 0 },
-        uTime: { value: 100 * Math.random() },
-        uBorderRadius: { value: this.borderRadius },
-        uAnimationIntensity: { value: this.reducedMotion ? 0 : this.responsiveConfig.animationIntensity }
+        uBorderRadius: { value: this.borderRadius }
       },
       transparent: true
     });
@@ -415,12 +406,6 @@ class Media {
 
     this.speed = scroll.current - scroll.last;
 
-    // Reduce animation on reduced motion or mobile
-    if (!this.reducedMotion) {
-      this.program.uniforms.uTime.value += 0.04 * this.responsiveConfig.animationIntensity;
-    }
-    this.program.uniforms.uSpeed.value = this.speed;
-
     const planeOffset = this.plane.scale.x / 2;
     const viewportOffset = this.viewport.width / 2;
 
@@ -465,8 +450,7 @@ class Media {
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
 
-    // Update animation intensity
-    this.program.uniforms.uAnimationIntensity.value = this.reducedMotion ? 0 : this.responsiveConfig.animationIntensity;
+
   }
 }
 
