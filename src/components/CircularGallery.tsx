@@ -492,6 +492,8 @@ class App {
   boundOnTouchUp!: () => void;
   isDown: boolean = false;
   start: number = 0;
+  startY: number = 0;
+  touchDirection: 'horizontal' | 'vertical' | null = null;
   resizeObserver?: ResizeObserver;
   responsiveConfig: ReturnType<typeof getResponsiveConfig>;
   reducedMotion: boolean;
@@ -614,20 +616,39 @@ class App {
   onTouchDown(e: MouseEvent | TouchEvent) {
     this.isDown = true;
     this.isInteracting = true;
+    this.touchDirection = null;
     this.lastInteractionTime = Date.now();
     this.scroll.position = this.scroll.current;
     this.start = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    this.startY = 'touches' in e ? e.touches[0].clientY : e.clientY;
   }
 
   onTouchMove(e: MouseEvent | TouchEvent) {
     if (!this.isDown) return;
 
-    // Prevent default on touch to avoid page scroll
-    if ('touches' in e) {
+    const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+    // Determine swipe direction on first significant movement
+    if (this.touchDirection === null && 'touches' in e) {
+      const deltaX = Math.abs(x - this.start);
+      const deltaY = Math.abs(y - this.startY);
+      const threshold = 5;
+      if (deltaX > threshold || deltaY > threshold) {
+        this.touchDirection = deltaX > deltaY ? 'horizontal' : 'vertical';
+      }
+    }
+
+    // If vertical swipe, allow normal page scrolling
+    if (this.touchDirection === 'vertical') {
+      return;
+    }
+
+    // Only prevent default for horizontal swipes within the gallery
+    if ('touches' in e && this.touchDirection === 'horizontal') {
       e.preventDefault();
     }
 
-    const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
     const touchMultiplier = this.responsiveConfig.scrollSpeed / 2;
     const distance = (this.start - x) * (touchMultiplier * 0.025);
     this.scroll.target = (this.scroll.position ?? 0) + distance;
@@ -635,6 +656,7 @@ class App {
 
   onTouchUp() {
     this.isDown = false;
+    this.touchDirection = null;
     this.lastInteractionTime = Date.now();
     this.onCheck();
   }
@@ -749,9 +771,11 @@ class App {
     window.addEventListener('mousedown', this.boundOnTouchDown);
     window.addEventListener('mousemove', this.boundOnTouchMove);
     window.addEventListener('mouseup', this.boundOnTouchUp);
-    window.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
-    window.addEventListener('touchmove', this.boundOnTouchMove, { passive: false });
-    window.addEventListener('touchend', this.boundOnTouchUp, { passive: true });
+
+    // Scope touch events to container only so they don't block page scrolling
+    this.container.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
+    this.container.addEventListener('touchmove', this.boundOnTouchMove, { passive: false });
+    this.container.addEventListener('touchend', this.boundOnTouchUp, { passive: true });
 
     // Add hover detection for auto-rotation pause
     this.container.addEventListener('mouseenter', boundOnMouseEnter);
@@ -771,9 +795,12 @@ class App {
     window.removeEventListener('mousedown', this.boundOnTouchDown);
     window.removeEventListener('mousemove', this.boundOnTouchMove);
     window.removeEventListener('mouseup', this.boundOnTouchUp);
-    window.removeEventListener('touchstart', this.boundOnTouchDown);
-    window.removeEventListener('touchmove', this.boundOnTouchMove);
-    window.removeEventListener('touchend', this.boundOnTouchUp);
+    // Remove container-scoped touch listeners
+    if (this.container) {
+      this.container.removeEventListener('touchstart', this.boundOnTouchDown);
+      this.container.removeEventListener('touchmove', this.boundOnTouchMove);
+      this.container.removeEventListener('touchend', this.boundOnTouchUp);
+    }
 
     if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);
