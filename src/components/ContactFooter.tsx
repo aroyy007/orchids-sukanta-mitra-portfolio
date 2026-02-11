@@ -8,7 +8,7 @@ export function ContactFooter() {
   return (
     <footer className="bg-[#0D0D0D]">
       {/* Tea Section */}
-      <div className="relative overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#f5f5f5]">
+      <div className="relative overflow-hidden py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#f5f5f5]">
         {/* Background Repeating Text */}
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none flex flex-col justify-center">
           <div className="whitespace-nowrap opacity-[0.04]">
