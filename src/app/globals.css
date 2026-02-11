@@ -379,11 +379,22 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Enable touch scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  /* Ensure proper height on mobile */
+  min-height: 100%;
 }
 
 body {
   overflow-x: hidden;
   width: 100%;
+  /* Enable touch scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  /* Ensure body can scroll */
+  position: relative;
+  min-height: 100vh;
 }
 
 ::-webkit-scrollbar {
