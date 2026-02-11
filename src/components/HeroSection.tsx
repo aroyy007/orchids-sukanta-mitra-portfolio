@@ -149,7 +149,7 @@ export function HeroSection() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 md:pb-8 flex-1">
-        <div className="flex flex-col lg:grid lg:grid-cols-[1fr_auto_1fr] gap-4 sm:gap-6 md:gap-8 items-center min-h-[calc(100vh-10rem)] sm:min-h-[calc(100vh-8rem)] lg:min-h-[75vh]">
+        <div className="flex flex-col lg:grid lg:grid-cols-[5fr_3fr_2fr] gap-4 sm:gap-6 md:gap-8 items-center min-h-[calc(100vh-10rem)] sm:min-h-[calc(100vh-8rem)] lg:min-h-[75vh]">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -235,7 +235,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative flex justify-center z-0 order-1 lg:order-2"
           >
-            <div className="relative w-[240px] h-[320px] sm:w-[280px] sm:h-[380px] md:w-[320px] md:h-[430px] lg:w-[380px] lg:h-[500px] xl:w-[420px] xl:h-[550px]">
+            <div className="relative w-[240px] h-[320px] sm:w-[280px] sm:h-[380px] md:w-[320px] md:h-[430px] lg:w-[320px] lg:h-[450px] xl:w-[380px] xl:h-[550px]">
               <Image
                 src="/heroimg.png"
                 alt="Sukanta Mitra - Visual Communication Designer"
@@ -243,7 +243,7 @@ export function HeroSection() {
                 className="object-contain object-bottom"
                 style={{
                   maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
+                  // WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
                 }}
                 priority
               />
@@ -254,19 +254,19 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-row lg:flex-col justify-center gap-6 sm:gap-8 z-10 lg:pl-8 order-3 w-full lg:w-auto"
+            className="flex flex-row lg:flex-col justify-center gap-6 sm:gap-8 z-10 order-3 w-full lg:w-auto"
           >
             <div className="text-center lg:text-left">
               <CountUpNumber end={6} suffix="+" />
-              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">YEARS OF EXPERIENCE</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 lg:whitespace-nowrap">YEARS OF EXPERIENCE</p>
             </div>
             <div className="text-center lg:text-left">
               <CountUpNumber end={375} suffix="+" />
-              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">HAPPY CLIENTS</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 lg:whitespace-nowrap">HAPPY CLIENTS</p>
             </div>
             <div className="text-center lg:text-left">
               <CountUpNumber end={500} suffix="+" />
-              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">PROJECTS DONE</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 lg:whitespace-nowrap">PROJECTS DONE</p>
             </div>
           </motion.div>
         </div>

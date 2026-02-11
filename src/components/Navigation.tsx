@@ -72,8 +72,8 @@ export function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-[#0a1628]/95 backdrop-blur-md border-b border-white/5"
-          : "bg-transparent"
+        ? "bg-[#0a1628]/95 backdrop-blur-md border-b border-white/5"
+        : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -81,7 +81,7 @@ export function Navigation() {
           <motion.a
             href="#home"
             onClick={() => handleNavClick("home")}
-            className="font-krub text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
+            className="font-anton text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
             whileHover={{ scale: 1.02 }}
           >
             SUKANTA<br />MITRA
@@ -93,9 +93,9 @@ export function Navigation() {
                 key={item.label}
                 href={item.href}
                 onClick={() => handleNavClick(item.sectionId)}
-                className={`font-krub text-sm transition-colors duration-300 tracking-wide relative ${activeSection === item.sectionId
-                    ? "text-[#CAFF33] font-bold"
-                    : "text-white/70 font-medium hover:text-[#CAFF33]"
+                className={`font-anton text-sm transition-colors duration-300 tracking-widest relative ${activeSection === item.sectionId
+                  ? "text-[#CAFF33] font-bold"
+                  : "text-white/70 font-medium hover:text-[#CAFF33]"
                   }`}
                 whileHover={{ y: -2 }}
               >
@@ -152,8 +152,8 @@ export function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className={`font-krub block text-lg transition-colors ${activeSection === item.sectionId
-                      ? "text-[#CAFF33] font-bold"
-                      : "text-white/70 font-medium hover:text-[#CAFF33]"
+                    ? "text-[#CAFF33] font-bold"
+                    : "text-white/70 font-medium hover:text-[#CAFF33]"
                     }`}
                   onClick={() => handleNavClick(item.sectionId)}
                 >

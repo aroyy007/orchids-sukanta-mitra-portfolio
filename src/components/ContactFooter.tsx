@@ -26,15 +26,45 @@ export function ContactFooter() {
         <div className="relative z-10 max-w-5xl mx-auto">
           {/* Main Content - Centered */}
           <div className="flex flex-col items-center text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal text-[#1a2744] leading-[0.95] tracking-tight mb-3 sm:mb-4"
-            >
-              LET'S CHAT OVER TEA!
-            </motion.h2>
+            <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 md:gap-6 mb-3 sm:mb-4 flex-nowrap">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="font-anton text-2xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-normal text-[#1a2744] leading-[0.95] tracking-tight text-right"
+              >
+                LET'S CHAT OVER TEA!
+              </motion.h2>
+
+              {/* Tea Cups - Side by Side on Desktop */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex items-end relative shrink-0"
+              >
+                {/* First Tea Cup (slightly behind and rotated left) */}
+                <div className="relative w-[30px] h-[40px] sm:w-[45px] sm:h-[60px] md:w-[75px] md:h-[100px] lg:w-[90px] lg:h-[120px] -rotate-12 -mr-2 sm:-mr-3 md:-mr-6">
+                  <Image
+                    src="/tea.png"
+                    alt="Tea cup"
+                    fill
+                    className="object-contain drop-shadow-lg"
+                  />
+                </div>
+                {/* Second Tea Cup (front, slightly rotated right) */}
+                <div className="relative w-[35px] h-[50px] sm:w-[50px] sm:h-[70px] md:w-[90px] md:h-[120px] lg:w-[105px] lg:h-[140px] rotate-6 z-10">
+                  <Image
+                    src="/tea.png"
+                    alt="Tea cup"
+                    fill
+                    className="object-contain drop-shadow-xl"
+                  />
+                </div>
+              </motion.div>
+            </div>
 
             <motion.a
               initial={{ opacity: 0, y: 20 }}
@@ -48,34 +78,6 @@ export function ContactFooter() {
               helloatmitra@gmail.com
             </motion.a>
           </div>
-
-          {/* Tea Cups - Positioned Right of Center */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="absolute right-[5%] sm:right-[10%] md:right-[15%] top-1/2 -translate-y-1/2 flex items-end"
-          >
-            {/* First Tea Cup (slightly behind and rotated left) */}
-            <div className="relative w-[45px] h-[60px] sm:w-[60px] sm:h-[80px] md:w-[75px] md:h-[100px] lg:w-[90px] lg:h-[120px] -rotate-12 -mr-3 sm:-mr-4 md:-mr-6">
-              <Image
-                src="/tea.png"
-                alt="Tea cup"
-                fill
-                className="object-contain drop-shadow-lg"
-              />
-            </div>
-            {/* Second Tea Cup (front, slightly rotated right) */}
-            <div className="relative w-[50px] h-[70px] sm:w-[70px] sm:h-[95px] md:w-[90px] md:h-[120px] lg:w-[105px] lg:h-[140px] rotate-6 z-10">
-              <Image
-                src="/tea.png"
-                alt="Tea cup"
-                fill
-                className="object-contain drop-shadow-xl"
-              />
-            </div>
-          </motion.div>
         </div>
       </div>
 
