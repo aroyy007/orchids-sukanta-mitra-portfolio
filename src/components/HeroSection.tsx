@@ -115,7 +115,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section id="home" className="relative py-20 md:py-28 bg-[#050d1d] flex flex-col">
+    <section id="home" className="relative min-h-screen bg-[#050d1d] flex flex-col">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Main center glow - more prominent blue gradient */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[350px] sm:w-[500px] md:w-[650px] lg:w-[800px] h-[350px] sm:h-[500px] md:h-[650px] lg:h-[800px] bg-[#1a3a6e]/70 rounded-full blur-[100px] md:blur-[150px]" />
@@ -149,7 +149,7 @@ export function HeroSection() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 md:pb-8 flex-1">
-        <div className="flex flex-col lg:grid lg:grid-cols-[5fr_3fr_2fr] gap-4 sm:gap-6 md:gap-8 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-[5fr_3fr_2fr] gap-4 sm:gap-6 md:gap-8 lg:gap-0 items-center min-h-[calc(100dvh-10rem)] sm:min-h-[calc(100dvh-8rem)] lg:min-h-[75vh]">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
