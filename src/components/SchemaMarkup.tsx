@@ -5,7 +5,7 @@ export function SchemaMarkup() {
     "name": "Sukanta Mitra",
     "jobTitle": "Visual Communication Designer",
     "description": "Visual Communication Designer based in South Asia. Specializing in graphic design, branding, publications, and event branding.",
-    "url": "https://yourdomain.com",
+    // "url": "https://yourdomain.com", // TODO: Add your domain after deployment
     "email": "helloatmitra@gmail.com",
     "telephone": "+8801980643483",
     "address": {
@@ -36,7 +36,7 @@ export function SchemaMarkup() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Sukanta Mitra Portfolio",
-    "url": "https://yourdomain.com",
+    // "url": "https://yourdomain.com", // TODO: Add your domain after deployment
     "description": "Portfolio of Sukanta Mitra - Visual Communication Designer",
     "author": {
       "@type": "Person",

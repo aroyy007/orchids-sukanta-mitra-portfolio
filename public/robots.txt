@@ -3,7 +3,8 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+# TODO: Add your domain after deployment
+# Sitemap: https://yourdomain.com/sitemap.xml
 
 # Disallow admin or private paths (if any)
 # User-agent: *

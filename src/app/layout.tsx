@@ -24,14 +24,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Sukanta Mitra" }],
   creator: "Sukanta Mitra",
   publisher: "Sukanta Mitra",
-  metadataBase: new URL('https://yourdomain.com'),
+  // metadataBase: new URL('https://yourdomain.com'), // TODO: Add your domain after deployment
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourdomain.com",
+    // url: "https://yourdomain.com", // TODO: Add your domain after deployment
     title: "Sukanta Mitra | Visual Communication Designer",
     description: "Portfolio of Sukanta Mitra - Visual Communication Designer based in South Asia. Specializing in graphic design, branding, publications, and event branding.",
     siteName: "Sukanta Mitra Portfolio",
