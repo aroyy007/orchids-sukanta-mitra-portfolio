@@ -1,85 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  image_url: string;
+  url?: string;
+  sort_order: number;
+}
 
 const categories = ["ALL", "EVENT BRANDING", "PUBLICATIONS", "LOGOS & BRANDING", "STATIC"];
-
-const projects = [
-  {
-    id: 1,
-    title: "Training manual design for BRAC Centre for and Justice",
-    category: "PUBLICATION DESIGN",
-    filterCategory: "PUBLICATIONS",
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Training manual design for BRAC Centre for and Justice",
-    category: "EVENT BRANDING",
-    filterCategory: "EVENT BRANDING",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Logo and full branding design for Glintify",
-    category: "LOGO & BRANDING",
-    filterCategory: "LOGOS & BRANDING",
-    image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    title: "Research Highlights design on Generative AI in Education",
-    category: "PUBLICATION DESIGN",
-    filterCategory: "PUBLICATIONS",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
-  },
-  {
-    id: 5,
-    title: "Training manual design for BRAC Centre for and Justice",
-    category: "PUBLICATION DESIGN",
-    filterCategory: "PUBLICATIONS",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
-  },
-  {
-    id: 6,
-    title: "Training manual design for BRAC Centre for and Justice",
-    category: "PUBLICATION DESIGN",
-    filterCategory: "PUBLICATIONS",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
-  },
-  {
-    id: 7,
-    title: "Brand Identity for TechFlow AI Startup",
-    category: "LOGO & BRANDING",
-    filterCategory: "LOGOS & BRANDING",
-    image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&h=400&fit=crop",
-  },
-  {
-    id: 8,
-    title: "Annual Report Design for Global NGO",
-    category: "PUBLICATION DESIGN",
-    filterCategory: "PUBLICATIONS",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=400&fit=crop",
-  },
-  {
-    id: 9,
-    title: "Conference Event Branding for TechSummit 2025",
-    category: "EVENT BRANDING",
-    filterCategory: "EVENT BRANDING",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop",
-  },
-];
 
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [visibleCount, setVisibleCount] = useState(6);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      if (error) {
+        console.error('Error loading projects:', error);
+      } else {
+        setProjects(data || []);
+      }
+      setLoading(false);
+    }
+    fetchProjects();
+  }, []);
 
   const filteredProjects = activeFilter === "ALL"
     ? projects
-    : projects.filter((p) => p.filterCategory === activeFilter);
+    : projects.filter((p) => p.category === activeFilter);
 
   const visibleProjects = filteredProjects.slice(0, visibleCount);
 
@@ -139,21 +102,16 @@ export function PortfolioSection() {
         >
           <AnimatePresence mode="popLayout">
             {visibleProjects.map((project, index) => (
-              <motion.div
+              <a
                 key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group cursor-pointer"
+                href={project.url || '#'}
+                target="_blank"
+                className="group cursor-pointer block"
               >
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-transparent hover:border-[#CAFF33] hover:shadow-[0_0_30px_rgba(202,255,51,0.3)] transition-all duration-250">
                   <div className="relative aspect-[4/3] bg-[#e8e8e8]">
                     <Image
-                      src={project.image}
+                      src={project.image_url}
                       alt={project.title}
                       fill
                       className="object-cover"
@@ -175,7 +133,7 @@ export function PortfolioSection() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </a>
             ))}
           </AnimatePresence>
         </motion.div>
@@ -200,6 +158,6 @@ export function PortfolioSection() {
           </motion.div>
         )}
       </div>
-    </section>
+    </section >
   );
 }

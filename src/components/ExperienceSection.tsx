@@ -3,21 +3,23 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const experiences = [
-  { years: "2025-2026", role: "Visual Communication Designer", company: "WaterAid Bangladesh" },
-  { years: "2025-2025", role: "Lead, Creative & Design", company: "Intelis" },
-  { years: "2024-2025", role: "Senior Assistant Director - Creative", company: "IID" },
-  { years: "2022-2024", role: "Assistant Director - Creative", company: "IID" },
-  { years: "2021-2022", role: "Visual Designer", company: "StepUp" },
-];
+import { supabase } from "@/lib/supabase";
 
-const skills = [
-  { name: "Photoshop", percentage: 88, color: "#CAFF33" },
-  { name: "Illustrator", percentage: 96, color: "#CAFF33" },
-  { name: "InDesign", percentage: 84, color: "#CAFF33" },
-  { name: "Premiere Pro", percentage: 74, color: "#CAFF33" },
-  { name: "After Effects", percentage: 72, color: "#CAFF33" },
-];
+interface Experience {
+  id: number;
+  years: string;
+  role: string;
+  company: string;
+  sort_order: number;
+}
+
+interface Skill {
+  id: number;
+  name: string;
+  percentage: number;
+  color: string;
+  sort_order: number;
+}
 
 function SkillBar({ name, percentage, color }: { name: string; percentage: number; color: string }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,6 +62,33 @@ function SkillBar({ name, percentage, color }: { name: string; percentage: numbe
 }
 
 export function ExperienceSection() {
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data: expData, error: expError } = await supabase
+        .from('experiences')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      const { data: skillData, error: skillError } = await supabase
+        .from('skills')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      if (expError) console.error('Error loading experiences:', expError);
+      else setExperiences(expData || []);
+
+      if (skillError) console.error('Error loading skills:', skillError);
+      else setSkills(skillData || []);
+
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
   return (
     <section id="about" className="bg-[#0D0D0D] py-10 sm:py-12 md:py-16 lg:py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -88,7 +117,7 @@ export function ExperienceSection() {
           >
             {experiences.map((exp, index) => (
               <motion.div
-                key={index}
+                key={exp.id || index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -119,7 +148,7 @@ export function ExperienceSection() {
           >
             {skills.map((skill, index) => (
               <motion.div
-                key={skill.name}
+                key={skill.id || skill.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

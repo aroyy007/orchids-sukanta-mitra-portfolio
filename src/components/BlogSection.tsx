@@ -1,65 +1,56 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, ArrowUpRight } from "lucide-react";
 
-const blogPosts = [
-  {
-    id: 1,
-    date: "27 Dec, 2025",
-    category: "VISUAL DESIGN",
-    title: "The Importance of visibility in Event Branding",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    date: "01 Dec, 2025",
-    category: "BRANDING",
-    title: "Uses of Color theory behind every Brands look",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    date: "27 Dec, 2025",
-    category: "PUBLICATIONS DESIGN",
-    title: "Why Publication Design Is More Than Just Layout",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    date: "15 Nov, 2025",
-    category: "UI/UX",
-    title: "Creating Seamless User Experiences in Mobile Apps",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop",
-  },
-  {
-    id: 5,
-    date: "10 Nov, 2025",
-    category: "TYPOGRAPHY",
-    title: "The Art of Choosing the Right Typeface",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=400&fit=crop",
-  },
-  {
-    id: 6,
-    date: "05 Nov, 2025",
-    category: "DESIGN SYSTEMS",
-    title: "Building Scalable Design Systems for Teams",
-    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=400&fit=crop",
-  },
-];
+import { supabase } from "@/lib/supabase";
+
+interface BlogPost {
+  id: number;
+  date: string;
+  category: string;
+  title: string;
+  image_url: string;
+  url?: string;
+  sort_order: number;
+}
 
 export function BlogSection() {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const visibleCount = 3;
+
+  useEffect(() => {
+    async function fetchBlogPosts() {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('date', { ascending: false });
+
+      if (error) {
+        console.error('Error loading blog posts:', error);
+      } else {
+        setBlogPosts(data || []);
+      }
+      setLoading(false);
+    }
+    fetchBlogPosts();
+  }, []);
+
   const totalPages = Math.ceil(blogPosts.length / visibleCount);
 
   const getVisiblePosts = () => {
+    if (blogPosts.length === 0) return [];
     const posts = [];
     for (let i = 0; i < visibleCount; i++) {
-      const index = (currentIndex + i) % blogPosts.length;
-      posts.push(blogPosts[index]);
+      // Handle wrapping around if needed, or just show less if not enough posts
+      if (i < blogPosts.length) {
+        const index = (currentIndex + i) % blogPosts.length;
+        posts.push(blogPosts[index]);
+      }
     }
     return posts;
   };
@@ -91,33 +82,35 @@ export function BlogSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group cursor-pointer"
+              className="group cursor-pointer h-full"
             >
-              <div className="bg-[#CAFF33] rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="p-4 sm:p-5">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#1a2744] flex items-center justify-center flex-shrink-0">
-                      <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#1a2744]" />
-                    </div>
-                    <span className="font-krub text-[#1a2744]/70 text-[10px] sm:text-xs font-medium uppercase tracking-wider truncate">
-                      {post.category}
-                    </span>
+              <a href={post.url || '#'} target="_blank" className="block h-full">
+                <div className="bg-[#CAFF33] rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={post.image_url}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
-                  <h3 className="font-krub text-base sm:text-lg font-bold text-[#1a2744] leading-tight mb-2 line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <span className="font-krub text-[#1a2744]/60 text-xs sm:text-sm">{post.date}</span>
+                  <div className="p-4 sm:p-5 flex flex-col flex-grow">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#1a2744] flex items-center justify-center flex-shrink-0">
+                        <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#1a2744]" />
+                      </div>
+                      <span className="font-krub text-[#1a2744]/70 text-[10px] sm:text-xs font-medium uppercase tracking-wider truncate">
+                        {post.category}
+                      </span>
+                    </div>
+                    <h3 className="font-krub text-base sm:text-lg font-bold text-[#1a2744] leading-tight mb-2 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <span className="font-krub text-[#1a2744]/60 text-xs sm:text-sm mt-auto block">{post.date}</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </motion.article>
           ))}
         </div>

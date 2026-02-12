@@ -5,41 +5,49 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import Image from "next/image";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "DARRELL STEWARD",
-    title: "Founder & Leader",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis",
-  },
-  {
-    id: 2,
-    name: "DARRELL STEWARD",
-    title: "Founder & Leader",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis",
-  },
-  {
-    id: 3,
-    name: "DARRELL STEWARD",
-    title: "Founder & Leader",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis",
-  },
-];
+import { supabase } from "@/lib/supabase";
+
+interface Testimonial {
+  id: number;
+  name: string;
+  title: string;
+  avatar_url: string;
+  text: string;
+  sort_order: number;
+}
 
 export function TestimonialsSection() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  useEffect(() => {
+    async function fetchTestimonials() {
+      const { data, error } = await supabase
+        .from('testimonials')
+        .select('*')
+        .order('sort_order', { ascending: true });
+
+      if (error) {
+        console.error('Error loading testimonials:', error);
+      } else {
+        setTestimonials(data || []);
+      }
+      setLoading(false);
+    }
+    fetchTestimonials();
   }, []);
 
+  const nextSlide = useCallback(() => {
+    if (testimonials.length === 0) return;
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  }, [testimonials]);
+
   const prevSlide = useCallback(() => {
+    if (testimonials.length === 0) return;
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  }, []);
+  }, [testimonials]);
 
   // Auto-slide every 3 seconds
   useEffect(() => {
@@ -54,6 +62,7 @@ export function TestimonialsSection() {
 
   // Get visible testimonials based on screen size (handled via CSS)
   const getVisibleTestimonials = () => {
+    if (testimonials.length === 0) return [];
     return [0, 1, 2].map((offset) => {
       const index = (currentIndex + offset) % testimonials.length;
       return { ...testimonials[index], offset };
@@ -108,7 +117,7 @@ export function TestimonialsSection() {
                     <div className="flex items-center gap-3 mb-3 sm:mb-4">
                       <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#CAFF33]/30 flex-shrink-0">
                         <Image
-                          src={testimonial.avatar}
+                          src={testimonial.avatar_url}
                           alt={testimonial.name}
                           fill
                           className="object-cover"
