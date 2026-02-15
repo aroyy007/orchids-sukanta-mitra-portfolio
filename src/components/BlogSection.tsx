@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Sparkles, ArrowUpRight } from "lucide-react";
+import { Sparkles, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
 
@@ -22,6 +22,8 @@ export function BlogSection() {
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const visibleCount = 3;
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
     async function fetchBlogPosts() {
@@ -55,6 +57,19 @@ export function BlogSection() {
     return posts;
   };
 
+  const nextSlide = () => {
+    if (blogPosts.length === 0) return;
+    setCurrentIndex((prev) => (prev + visibleCount) % blogPosts.length);
+  };
+
+  const prevSlide = () => {
+    if (blogPosts.length === 0) return;
+    setCurrentIndex((prev) => {
+      const newIndex = prev - visibleCount;
+      return newIndex < 0 ? Math.max(0, blogPosts.length - visibleCount) : newIndex;
+    });
+  };
+
   return (
     <section id="blog" className="bg-[#0f1729] py-10 sm:py-12 md:py-14 lg:py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
@@ -74,45 +89,71 @@ export function BlogSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {getVisiblePosts().map((post, index) => (
-            <motion.article
-              key={`${post.id}-${index}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group cursor-pointer h-full"
-            >
-              <a href={post.url || '#'} target="_blank" className="block h-full">
-                <div className="bg-[#CAFF33] rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={post.image_url}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-4 sm:p-5 flex flex-col flex-grow">
-                    <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#1a2744] flex items-center justify-center flex-shrink-0">
-                        <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#1a2744]" />
-                      </div>
-                      <span className="font-krub text-[#1a2744]/70 text-[10px] sm:text-xs font-medium uppercase tracking-wider truncate">
-                        {post.category}
-                      </span>
+        <div className="relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {getVisiblePosts().map((post, index) => (
+              <motion.article
+                key={`${post.id}-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group cursor-pointer h-full"
+              >
+                <a href={post.url || '#'} target="_blank" className="block h-full">
+                  <div className="bg-[#CAFF33] rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={post.image_url}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
                     </div>
-                    <h3 className="font-krub text-base sm:text-lg font-bold text-[#1a2744] leading-tight mb-2 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <span className="font-krub text-[#1a2744]/60 text-xs sm:text-sm mt-auto block">{post.date}</span>
+                    <div className="p-4 sm:p-5 flex flex-col flex-grow">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#1a2744] flex items-center justify-center flex-shrink-0">
+                          <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#1a2744]" />
+                        </div>
+                        <span className="font-krub text-[#1a2744]/70 text-[10px] sm:text-xs font-medium uppercase tracking-wider truncate">
+                          {post.category}
+                        </span>
+                      </div>
+                      <h3 className="font-krub text-base sm:text-lg font-bold text-[#1a2744] leading-tight mb-2 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      <span className="font-krub text-[#1a2744]/60 text-xs sm:text-sm mt-auto block">{post.date}</span>
+                    </div>
                   </div>
-                </div>
-              </a>
-            </motion.article>
-          ))}
+                </a>
+              </motion.article>
+            ))}
+          </div>
+
+          {/* Navigation Buttons */}
+          {blogPosts.length > visibleCount && (
+            <>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#CAFF33] border-2 border-[#1a2744] flex items-center justify-center text-[#1a2744] hover:bg-[#1a2744] hover:text-[#CAFF33] transition-all duration-300 shadow-lg z-10"
+                aria-label="Previous blog posts"
+              >
+                <ChevronLeft size={24} />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#CAFF33] border-2 border-[#1a2744] flex items-center justify-center text-[#1a2744] hover:bg-[#1a2744] hover:text-[#CAFF33] transition-all duration-300 shadow-lg z-10"
+                aria-label="Next blog posts"
+              >
+                <ChevronRight size={24} />
+              </motion.button>
+            </>
+          )}
         </div>
 
         <div className="flex justify-center gap-2 mt-6 sm:mt-8">

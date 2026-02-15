@@ -149,12 +149,12 @@ export function HeroSection() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 md:pb-8 flex-1">
-        <div className="flex flex-col lg:grid lg:grid-cols-[5fr_3fr_2fr] gap-4 sm:gap-6 md:gap-8 lg:gap-0 items-center min-h-[calc(100dvh-10rem)] sm:min-h-[calc(100dvh-8rem)] lg:min-h-[75vh]">
+        <div className="flex flex-col lg:grid lg:grid-cols-[4fr_4fr_2fr] gap-4 sm:gap-6 md:gap-8 lg:gap-6 items-center min-h-[calc(100dvh-10rem)] sm:min-h-[calc(100dvh-8rem)] lg:min-h-[75vh]">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-3 sm:space-y-4 z-10 text-center lg:text-left order-2 lg:order-1"
+            className="space-y-3 sm:space-y-4 z-10 text-center lg:text-left order-2 lg:order-1 w-full"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -233,9 +233,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex justify-center z-0 order-1 lg:order-2"
+            className="relative flex justify-center z-0 order-1 lg:order-2 w-full"
           >
-            <div className="relative w-[240px] h-[320px] sm:w-[280px] sm:h-[380px] md:w-[320px] md:h-[430px] lg:w-[320px] lg:h-[450px] xl:w-[380px] xl:h-[550px]">
+            <div className="relative w-[240px] h-[320px] sm:w-[280px] sm:h-[380px] md:w-[320px] md:h-[430px] lg:w-[360px] lg:h-[500px] xl:w-[420px] xl:h-[600px]">
               <Image
                 src="/heroimg.png"
                 alt="Sukanta Mitra - Visual Communication Designer"
@@ -254,19 +254,19 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-row lg:flex-col justify-center gap-6 sm:gap-8 z-10 order-3 w-full lg:w-auto"
+            className="flex flex-row lg:flex-col justify-center gap-6 sm:gap-8 lg:gap-10 z-10 order-3 w-full lg:w-auto"
           >
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-right">
               <CountUpNumber end={6} suffix="+" />
-              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 lg:whitespace-nowrap">YEARS OF EXPERIENCE</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">YEARS OF<br className="hidden lg:block" /> EXPERIENCE</p>
             </div>
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-right">
               <CountUpNumber end={375} suffix="+" />
-              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 lg:whitespace-nowrap">HAPPY CLIENTS</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">HAPPY<br className="hidden lg:block" /> CLIENTS</p>
             </div>
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-right">
               <CountUpNumber end={500} suffix="+" />
-              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1 lg:whitespace-nowrap">PROJECTS DONE</p>
+              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">PROJECTS<br className="hidden lg:block" /> DONE</p>
             </div>
           </motion.div>
         </div>
