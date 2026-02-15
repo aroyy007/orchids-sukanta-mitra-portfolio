@@ -109,12 +109,12 @@ export function PortfolioSection() {
                 className="group cursor-pointer block"
               >
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-transparent hover:border-[#CAFF33] hover:shadow-[0_0_30px_rgba(202,255,51,0.3)] transition-all duration-250">
-                  <div className="relative aspect-[4/3] bg-[#e8e8e8]">
+                  <div className="relative aspect-[4/3] bg-[#e8e8e8] overflow-hidden">
                     <Image
                       src={project.image_url}
                       alt={project.title}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>

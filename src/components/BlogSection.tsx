@@ -101,7 +101,7 @@ export function BlogSection() {
                 className="group cursor-pointer h-full"
               >
                 <a href={post.url || '#'} target="_blank" className="block h-full">
-                  <div className="bg-[#CAFF33] rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                  <div className="bg-[#CAFF33] rounded-xl sm:rounded-2xl overflow-hidden border-2 border-transparent hover:border-[#1a2744] hover:shadow-[0_0_30px_rgba(202,255,51,0.3)] transition-all duration-250 h-full flex flex-col">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image
                         src={post.image_url}
