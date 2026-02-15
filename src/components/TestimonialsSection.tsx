@@ -18,7 +18,6 @@ interface Testimonial {
 
 export function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -34,7 +33,6 @@ export function TestimonialsSection() {
       } else {
         setTestimonials(data || []);
       }
-      setLoading(false);
     }
     fetchTestimonials();
   }, []);

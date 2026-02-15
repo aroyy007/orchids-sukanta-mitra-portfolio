@@ -21,7 +21,6 @@ export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [visibleCount, setVisibleCount] = useState(6);
   const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -35,7 +34,6 @@ export function PortfolioSection() {
       } else {
         setProjects(data || []);
       }
-      setLoading(false);
     }
     fetchProjects();
   }, []);
@@ -98,15 +96,16 @@ export function PortfolioSection() {
 
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible scrollbar-hide pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0"
         >
           <AnimatePresence mode="popLayout">
-            {visibleProjects.map((project, index) => (
+            {visibleProjects.map((project) => (
               <a
                 key={project.id}
                 href={project.url || '#'}
                 target="_blank"
-                className="group cursor-pointer block"
+                rel="noopener noreferrer"
+                className="group cursor-pointer block flex-shrink-0 w-[85vw] sm:w-auto snap-center"
               >
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-transparent hover:border-[#CAFF33] hover:shadow-[0_0_30px_rgba(202,255,51,0.3)] transition-all duration-250">
                   <div className="relative aspect-[4/3] bg-[#e8e8e8] overflow-hidden">

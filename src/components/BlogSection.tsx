@@ -19,11 +19,8 @@ interface BlogPost {
 
 export function BlogSection() {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const visibleCount = 3;
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
     async function fetchBlogPosts() {
@@ -37,7 +34,6 @@ export function BlogSection() {
       } else {
         setBlogPosts(data || []);
       }
-      setLoading(false);
     }
     fetchBlogPosts();
   }, []);
@@ -90,7 +86,7 @@ export function BlogSection() {
         </motion.div>
 
         <div className="relative">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:overflow-visible scrollbar-hide pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
             {getVisiblePosts().map((post, index) => (
               <motion.article
                 key={`${post.id}-${index}`}
@@ -98,9 +94,9 @@ export function BlogSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group cursor-pointer h-full"
+                className="group cursor-pointer h-full flex-shrink-0 w-[85vw] sm:w-auto snap-center"
               >
-                <a href={post.url || '#'} target="_blank" className="block h-full">
+                <a href={post.url || '#'} target="_blank" rel="noopener noreferrer" className="block h-full">
                   <div className="bg-[#CAFF33] rounded-xl sm:rounded-2xl overflow-hidden border-2 border-transparent hover:border-[#1a2744] hover:shadow-[0_0_30px_rgba(202,255,51,0.3)] transition-all duration-250 h-full flex flex-col">
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Image

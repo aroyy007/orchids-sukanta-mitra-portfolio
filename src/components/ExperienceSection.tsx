@@ -64,7 +64,6 @@ function SkillBar({ name, percentage, color }: { name: string; percentage: numbe
 export function ExperienceSection() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [skills, setSkills] = useState<Skill[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -83,8 +82,6 @@ export function ExperienceSection() {
 
       if (skillError) console.error('Error loading skills:', skillError);
       else setSkills(skillData || []);
-
-      setLoading(false);
     }
     fetchData();
   }, []);
