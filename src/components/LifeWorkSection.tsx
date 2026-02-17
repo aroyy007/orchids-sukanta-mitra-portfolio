@@ -32,7 +32,7 @@ export function LifeWorkSection() {
   const [bookIndex, setBookIndex] = useState(0);
   const [hoveredBook, setHoveredBook] = useState<number | null>(null);
 
-  const visibleBookCount = 8;
+  const visibleBookCount = 7;
 
   const nextBook = useCallback(() => {
     setBookIndex((prev) => (prev + 1) % bookshelfImages.length);
