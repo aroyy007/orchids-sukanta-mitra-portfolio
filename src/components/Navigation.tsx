@@ -93,13 +93,13 @@ export function Navigation() {
                 key={item.label}
                 href={item.href}
                 onClick={() => handleNavClick(item.sectionId)}
-                className={`font-anton text-sm transition-colors duration-300 tracking-widest relative ${activeSection === item.sectionId
+                className={`font-anton text-sm transition-colors duration-300 tracking-widest relative group ${activeSection === item.sectionId
                   ? "text-[#CAFF33] font-bold"
                   : "text-white/70 font-medium hover:text-[#CAFF33]"
                   }`}
-                whileHover={{ y: -2 }}
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#CAFF33] origin-left scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100" />
               </motion.a>
             ))}
           </div>
