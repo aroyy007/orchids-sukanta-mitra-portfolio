@@ -148,7 +148,7 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 md:pb-8 flex-1">
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 md:pb-8 flex-1">
         <div className="flex flex-col lg:grid lg:grid-cols-[4fr_4fr_2fr] gap-4 sm:gap-6 md:gap-8 lg:gap-6 items-center min-h-[calc(100dvh-10rem)] sm:min-h-[calc(100dvh-8rem)] lg:min-h-[75vh]">
           <motion.div
             initial={{ opacity: 0, x: -50 }}

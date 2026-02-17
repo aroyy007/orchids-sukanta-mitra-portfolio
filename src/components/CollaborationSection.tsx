@@ -84,7 +84,7 @@ const collaborators = [
 export function CollaborationSection() {
   return (
     <section className="bg-white py-6 sm:py-8 md:py-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

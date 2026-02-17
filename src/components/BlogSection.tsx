@@ -68,7 +68,7 @@ export function BlogSection() {
 
   return (
     <section id="blog" className="bg-[#0f1729] py-10 sm:py-12 md:py-14 lg:py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

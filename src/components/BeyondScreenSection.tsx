@@ -37,7 +37,7 @@ export function BeyondScreenSection() {
 
   return (
     <section className="bg-[#0D0D0D] py-24 md:py-32 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="max-w-screen-2xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,9 +110,8 @@ export function BeyondScreenSection() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? "bg-[#CAFF33] w-6" : "bg-white/20 hover:bg-white/40"
-                }`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-[#CAFF33] w-6" : "bg-white/20 hover:bg-white/40"
+                  }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}

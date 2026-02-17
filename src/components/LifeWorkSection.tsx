@@ -53,7 +53,7 @@ export function LifeWorkSection() {
 
   return (
     <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-[#1a2744]">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+      <div className="max-w-screen-2xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center gap-2 text-[#CAFF33] text-sm font-medium mb-4">
             <Sparkles className="w-4 h-4" />
@@ -88,38 +88,38 @@ export function LifeWorkSection() {
         <div className="relative max-w-6xl mx-auto">
           <div className="bg-[#e8e8e8] rounded-xl sm:rounded-2xl py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-6 md:px-10 lg:px-16">
             <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 py-4 sm:py-6 md:py-8 overflow-x-auto scrollbar-hide -mx-2 px-2 sm:mx-0 sm:px-0 sm:overflow-visible">
-            {getVisibleBooks().map((book, idx) => (
-              <motion.div
-                key={`${book.id}-${idx}`}
-                className="relative flex-shrink-0 rounded-md sm:rounded-lg overflow-hidden cursor-pointer"
-                onMouseEnter={() => setHoveredBook(book.id)}
-                onMouseLeave={() => setHoveredBook(null)}
-                animate={{
-                  scale: hoveredBook === book.id ? (typeof window !== 'undefined' && window.innerWidth < 640 ? 1.08 : 1.15) : 1,
-                  y: hoveredBook === book.id ? (typeof window !== 'undefined' && window.innerWidth < 640 ? -8 : -12) : 0,
-                }}
-                transition={{ 
-                  duration: 0.4, 
-                  ease: [0.34, 1.56, 0.64, 1]
-                }}
-                style={{
-                  width: "clamp(70px, 8vw, 120px)",
-                  height: "clamp(105px, 12vw, 180px)",
-                  zIndex: hoveredBook === book.id ? 50 : 1,
-                  boxShadow: hoveredBook === book.id 
-                    ? "0 12px 30px rgba(0, 0, 0, 0.25), 0 0 15px rgba(202, 255, 51, 0.15)" 
-                    : "0 2px 6px rgba(0, 0, 0, 0.12)",
-                }}
-              >
-                <Image
-                  src={book.src}
-                  alt={book.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 70px, (max-width: 1024px) 90px, 120px"
-                />
-              </motion.div>
-            ))}
+              {getVisibleBooks().map((book, idx) => (
+                <motion.div
+                  key={`${book.id}-${idx}`}
+                  className="relative flex-shrink-0 rounded-md sm:rounded-lg overflow-hidden cursor-pointer"
+                  onMouseEnter={() => setHoveredBook(book.id)}
+                  onMouseLeave={() => setHoveredBook(null)}
+                  animate={{
+                    scale: hoveredBook === book.id ? (typeof window !== 'undefined' && window.innerWidth < 640 ? 1.08 : 1.15) : 1,
+                    y: hoveredBook === book.id ? (typeof window !== 'undefined' && window.innerWidth < 640 ? -8 : -12) : 0,
+                  }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.34, 1.56, 0.64, 1]
+                  }}
+                  style={{
+                    width: "clamp(70px, 8vw, 120px)",
+                    height: "clamp(105px, 12vw, 180px)",
+                    zIndex: hoveredBook === book.id ? 50 : 1,
+                    boxShadow: hoveredBook === book.id
+                      ? "0 12px 30px rgba(0, 0, 0, 0.25), 0 0 15px rgba(202, 255, 51, 0.15)"
+                      : "0 2px 6px rgba(0, 0, 0, 0.12)",
+                  }}
+                >
+                  <Image
+                    src={book.src}
+                    alt={book.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 70px, (max-width: 1024px) 90px, 120px"
+                  />
+                </motion.div>
+              ))}
             </div>
           </div>
 
