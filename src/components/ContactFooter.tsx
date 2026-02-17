@@ -93,7 +93,7 @@ export function ContactFooter() {
               className="text-center sm:text-left"
             >
               <h3
-                className="font-krub text-lg sm:text-xl font-bold text-white mb-1 tracking-tight"
+                className="font-anton text-lg sm:text-xl text-white mb-1 tracking-tight"
               >
                 SUKANTA MITRA
               </h3>

@@ -100,7 +100,7 @@ function CountUpNumber({ end, suffix = "", duration = 2000 }: { end: number; suf
   }, [isVisible, end, duration]);
 
   return (
-    <div ref={ref} className="font-anton text-4xl sm:text-5xl md:text-6xl font-bold text-[#CAFF33]">
+    <div ref={ref} className="font-anton text-4xl sm:text-5xl md:text-6xl text-[#CAFF33]">
       {count.toString().padStart(2, "0")}{suffix}
     </div>
   );

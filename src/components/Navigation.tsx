@@ -61,9 +61,25 @@ export function Navigation() {
     };
   }, []);
 
-  const handleNavClick = useCallback((sectionId: string) => {
-    setActiveSection(sectionId);
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
     setIsMobileMenuOpen(false);
+    setActiveSection(sectionId);
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+
+      // Update URL hash without jumping
+      window.history.pushState(null, "", `#${sectionId}`);
+    }
   }, []);
 
   return (
@@ -80,7 +96,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           <motion.a
             href="#home"
-            onClick={() => handleNavClick("home")}
+            onClick={(e) => handleNavClick(e, "home")}
             className="font-anton text-lg font-bold text-[#CAFF33] tracking-wide leading-tight"
             whileHover={{ scale: 1.02 }}
           >
@@ -92,7 +108,7 @@ export function Navigation() {
               <motion.a
                 key={item.label}
                 href={item.href}
-                onClick={() => handleNavClick(item.sectionId)}
+                onClick={(e) => handleNavClick(e, item.sectionId)}
                 className={`font-anton text-sm transition-colors duration-300 tracking-widest relative group ${activeSection === item.sectionId
                   ? "text-[#CAFF33] font-bold"
                   : "text-white/70 font-medium hover:text-[#CAFF33]"
@@ -155,7 +171,7 @@ export function Navigation() {
                     ? "text-[#CAFF33] font-bold"
                     : "text-white/70 font-medium hover:text-[#CAFF33]"
                     }`}
-                  onClick={() => handleNavClick(item.sectionId)}
+                  onClick={(e) => handleNavClick(e, item.sectionId)}
                 >
                   {item.label}
                 </motion.a>
