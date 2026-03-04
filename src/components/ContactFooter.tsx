@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin, Instagram, Dribbble } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import { FaLinkedinIn, FaBehance, FaFacebookF, FaInstagram } from "react-icons/fa";
 import Image from "next/image";
 
 export function ContactFooter() {
@@ -148,10 +149,11 @@ export function ContactFooter() {
               </h4>
               <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start md:justify-end">
                 {[
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Instagram, href: "#", label: "Instagram" },
-                  { icon: Dribbble, href: "#", label: "Dribbble" },
-                ].map(({ icon: Icon, href, label }) => (
+                  { icon: <FaLinkedinIn className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "LinkedIn" },
+                  { icon: <FaBehance className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "Behance" },
+                  { icon: <FaFacebookF className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "Facebook" },
+                  { icon: <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "Instagram" },
+                ].map(({ icon, href, label }) => (
                   <motion.a
                     key={label}
                     href={href}
@@ -159,7 +161,7 @@ export function ContactFooter() {
                     className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1A1A1A] flex items-center justify-center text-white/60 hover:bg-[#CAFF33] hover:text-[#0D0D0D] transition-all duration-300 border border-white/5"
                     aria-label={label}
                   >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    {icon}
                   </motion.a>
                 ))}
               </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Mail } from "lucide-react";
+import { FaLinkedinIn, FaBehance, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const navItems = [
   { label: "HOME", href: "#home", sectionId: "home" },
@@ -12,10 +13,10 @@ const navItems = [
 ];
 
 const socialIcons = [
-  { icon: "in", href: "#" },
-  { icon: "be", href: "#" },
-  { icon: "fb", href: "#" },
-  { icon: "ig", href: "#" },
+  { icon: <FaLinkedinIn size={12} />, href: "#" },
+  { icon: <FaBehance size={12} />, href: "#" },
+  { icon: <FaFacebookF size={12} />, href: "#" },
+  { icon: <FaInstagram size={12} />, href: "#" },
 ];
 
 export function Navigation() {
@@ -63,14 +64,14 @@ export function Navigation() {
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     e.preventDefault();
-    
+
     // Close mobile menu first
     setIsMobileMenuOpen(false);
-    
+
     // Small delay to allow menu to close before scrolling (prevents layout shift issues on mobile)
     setTimeout(() => {
       setActiveSection(sectionId);
-      
+
       const element = document.getElementById(sectionId);
       if (element) {
         const headerOffset = 80;

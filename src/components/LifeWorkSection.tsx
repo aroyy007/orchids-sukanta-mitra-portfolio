@@ -1,20 +1,13 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import dynamic from "next/dynamic";
+import { supabase } from "@/lib/supabase";
 
 const CircularGallery = dynamic(() => import('./CircularGallery'), { ssr: false });
-
-const beyondScreenImages = [
-  { image: "/BTS1.png", text: "" },
-  { image: "/BTS2.png", text: "" },
-  { image: "/BTS3.png", text: "" },
-  { image: "/BTS4.png", text: "" },
-  { image: "/BTS5.png", text: "" },
-];
 
 const bookshelfImages = [
   { id: 1, src: "/showyourwork.webp", alt: "Show Your Work" },
@@ -32,7 +25,40 @@ export function LifeWorkSection() {
   const [bookIndex, setBookIndex] = useState(0);
   const [hoveredBook, setHoveredBook] = useState<number | null>(null);
 
+  // Gallery state
+  const [galleryItems, setGalleryItems] = useState<{ image: string, text: string }[]>([]);
+  const [loadingGallery, setLoadingGallery] = useState(true);
+
   const visibleBookCount = 7;
+
+  useEffect(() => {
+    async function fetchGalleryImages() {
+      try {
+        const { data, error } = await supabase
+          .from('gallery_images')
+          .select('*')
+          .order('sort_order', { ascending: true });
+
+        if (error) {
+          console.error("Error fetching gallery images:", error);
+          return;
+        }
+
+        if (data && data.length > 0) {
+          // Format for CircularGallery ({ image: "url", text: "" })
+          const formattedItems = data.map(item => ({
+            image: item.image_url,
+            text: ""
+          }));
+          setGalleryItems(formattedItems);
+        }
+      } finally {
+        setLoadingGallery(false);
+      }
+    }
+
+    fetchGalleryImages();
+  }, []);
 
   const nextBook = useCallback(() => {
     setBookIndex((prev) => (prev + 1) % bookshelfImages.length);
@@ -65,15 +91,25 @@ export function LifeWorkSection() {
         </div>
 
         <div className="relative mb-24 md:mb-32 w-full" style={{ height: 'min(600px, 70vh)' }}>
-          <CircularGallery
-            items={beyondScreenImages}
-            bend={3}
-            textColor="#CAFF33"
-            borderRadius={0.05}
-            scrollSpeed={1.5}
-            scrollEase={0.01}
-            font="bold 24px Krub"
-          />
+          {loadingGallery ? (
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-12 h-12 border-4 border-[#CAFF33]/30 border-t-[#CAFF33] rounded-full animate-spin" />
+            </div>
+          ) : galleryItems.length > 0 ? (
+            <CircularGallery
+              items={galleryItems}
+              bend={3}
+              textColor="#CAFF33"
+              borderRadius={0.05}
+              scrollSpeed={1.5}
+              scrollEase={0.01}
+              font="bold 24px Krub"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-white/50 font-krub">
+              No gallery images found.
+            </div>
+          )}
         </div>
 
         <div className="text-center mb-10 md:mb-14">
