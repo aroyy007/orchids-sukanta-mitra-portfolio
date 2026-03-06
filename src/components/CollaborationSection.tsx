@@ -2,88 +2,76 @@
 
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import Image from "next/image";
 
-const collaborators = [
-  {
-    id: 1,
-    name: "British Council",
-    logo: (
-      <div className="flex items-center gap-3">
-        <div className="grid grid-cols-3 gap-1">
-          {[...Array(9)].map((_, i) => (
-            <div key={i} className="w-3 h-3 rounded-full bg-[#5C2D5C]" />
-          ))}
-        </div>
-        <div className="text-[#1a2744]">
-          <div className="text-xl font-bold tracking-wide leading-tight">BRITISH</div>
-          <div className="text-xl font-bold tracking-wide leading-tight">COUNCIL</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    name: "UNDRR",
-    logo: (
-      <div className="flex items-center gap-3">
-        <svg width="50" height="50" viewBox="0 0 100 100" className="text-[#1a5a96]">
-          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" />
-          <path d="M30 70 Q50 30 70 70" fill="none" stroke="#2e8b57" strokeWidth="3" />
-          <path d="M35 65 Q50 35 65 65" fill="none" stroke="#3cb371" strokeWidth="2" />
-          <circle cx="60" cy="35" r="8" fill="#f4a460" />
-          <path d="M55 55 L50 45 L45 55 L50 50 Z" fill="#ff6347" />
-        </svg>
-        <div>
-          <div className="text-xl font-bold text-[#1a5a96] tracking-wide">UNDRR</div>
-          <div className="text-[10px] text-[#1a5a96]">UN Office for Disaster Risk Reduction</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    name: "PAL Network",
-    logo: (
-      <div className="flex items-center gap-3">
-        <svg width="50" height="50" viewBox="0 0 100 100">
-          <path d="M20 80 L50 30 L80 80 Z" fill="none" stroke="#2e8b57" strokeWidth="3" />
-          <path d="M30 75 L50 40 L70 75 Z" fill="none" stroke="#3cb371" strokeWidth="2" />
-          <rect x="35" y="55" width="30" height="25" fill="#f5f5dc" stroke="#daa520" strokeWidth="2" />
-          <circle cx="65" cy="45" r="8" fill="#ff6347" />
-          <path d="M62 42 L68 48 M62 48 L68 42" stroke="#fff" strokeWidth="2" />
-        </svg>
-        <div>
-          <div className="text-xl font-bold text-[#1a2744]">PAL <span className="text-[#2e8b57]">NETWORK</span></div>
-          <div className="text-xs text-[#2e8b57]">People&apos;s Action for Learning</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    name: "United Nations Network on Migration",
-    logo: (
-      <div className="flex items-center gap-3">
-        <svg width="50" height="50" viewBox="0 0 100 100" className="text-[#1a5a96]">
-          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" />
-          <ellipse cx="50" cy="50" rx="20" ry="45" fill="none" stroke="currentColor" strokeWidth="1" />
-          <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="1" />
-          <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" strokeWidth="1" />
-          <ellipse cx="50" cy="50" rx="45" ry="20" fill="none" stroke="currentColor" strokeWidth="1" />
-        </svg>
-        <div>
-          <div className="text-sm text-[#1a5a96] leading-tight">United Nations</div>
-          <div className="text-sm font-bold text-[#1a5a96] leading-tight">Network on Migration</div>
-          <div className="text-[10px] text-[#2e8b57] italic">Working Better Together</div>
-        </div>
-      </div>
-    ),
-  },
+// Row 1: 7 logos (British Council + first 6 PNGs)
+const row1Logos = [
+  { id: "bc", name: "British Council", type: "component" as const },
+  { id: "undrr", name: "UNDRR", type: "image" as const, src: "/collaboration/undrr.png" },
+  { id: "palnetwork", name: "PAL Network", type: "image" as const, src: "/collaboration/palnetwork.png" },
+  { id: "unitednations", name: "United Nations", type: "image" as const, src: "/collaboration/unitednations.png" },
+  { id: "brac", name: "BRAC", type: "image" as const, src: "/collaboration/brac.png" },
+  { id: "bracuni", name: "BRAC University", type: "image" as const, src: "/collaboration/bracuni.png" },
+  { id: "wateraid", name: "WaterAid", type: "image" as const, src: "/collaboration/wateraid.png" },
 ];
 
-export function CollaborationSection() {
+// Row 2: 7 logos (remaining PNGs)
+const row2Logos = [
+  { id: "cs", name: "CS", type: "image" as const, src: "/collaboration/cs.png" },
+  { id: "iid", name: "IID", type: "image" as const, src: "/collaboration/iid.jpg" },
+  { id: "law", name: "Law", type: "image" as const, src: "/collaboration/law.png" },
+  { id: "lego", name: "LEGO", type: "image" as const, src: "/collaboration/lego.jpg" },
+  { id: "ministryofcivil", name: "Ministry of Civil", type: "image" as const, src: "/collaboration/ministryofcivil.png" },
+  { id: "ministryofplanning", name: "Ministry of Planning", type: "image" as const, src: "/collaboration/ministryofplanning.png" },
+  { id: "youth", name: "Youth", type: "image" as const, src: "/collaboration/youth.png" },
+];
+
+function BritishCouncilLogo() {
   return (
-    <section className="bg-white py-6 sm:py-8 md:py-10 overflow-hidden">
+    <div className="flex items-center gap-3">
+      <div className="grid grid-cols-3 gap-1">
+        {[...Array(9)].map((_, i) => (
+          <div key={i} className="w-3 h-3 rounded-full bg-[#5C2D5C]" />
+        ))}
+      </div>
+      <div className="text-[#1a2744]">
+        <div className="text-xl font-bold tracking-wide leading-tight">BRITISH</div>
+        <div className="text-xl font-bold tracking-wide leading-tight">COUNCIL</div>
+      </div>
+    </div>
+  );
+}
+
+function LogoItem({ logo }: { logo: typeof row1Logos[number] }) {
+  if (logo.type === "component") {
+    return (
+      <div className="flex-shrink-0 w-[190px] sm:w-[250px] md:w-[280px] lg:w-[320px] h-[100px] sm:h-[110px] md:h-[130px] flex items-center justify-center mx-2 sm:mx-3 md:mx-4 lg:mx-5">
+        <BritishCouncilLogo />
+      </div>
+    );
+  }
+  return (
+    <div className="flex-shrink-0 w-[190px] sm:w-[250px] md:w-[280px] lg:w-[320px] h-[100px] sm:h-[110px] md:h-[130px] flex items-center justify-center mx-2 sm:mx-3 md:mx-4 lg:mx-5">
+      <div className="relative w-full h-[70px] sm:h-[85px] md:h-[100px]">
+        <Image
+          src={logo.src!}
+          alt={logo.name}
+          fill
+          className="object-contain"
+          sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, (max-width: 1024px) 220px, 260px"
+        />
+      </div>
+    </div>
+  );
+}
+
+export function CollaborationSection() {
+  // Duplicate logos for seamless infinite scroll
+  const row1Items = [...row1Logos, ...row1Logos, ...row1Logos, ...row1Logos];
+  const row2Items = [...row2Logos, ...row2Logos, ...row2Logos, ...row2Logos];
+
+  return (
+    <section className="bg-white py-2 sm:py-4 md:py-6 overflow-hidden">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -97,27 +85,52 @@ export function CollaborationSection() {
             <span className="font-krub uppercase tracking-wider">Collaborated With</span>
           </div>
         </motion.div>
+      </div>
+
+      {/* Row 1: Scrolls left to right */}
+      <div className="relative w-full overflow-hidden mb-4 sm:mb-6">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-12"
+          className="flex items-center"
+          animate={{ x: ["-50%", "0%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 20,
+              ease: "linear",
+            },
+          }}
         >
-          {collaborators.map((collab, index) => (
-            <motion.div
-              key={collab.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="flex items-center justify-center"
-            >
-              <div className="scale-75 sm:scale-85 md:scale-90 lg:scale-100">
-                {collab.logo}
-              </div>
-            </motion.div>
+          {row1Items.map((logo, index) => (
+            <LogoItem key={`row1-${logo.id}-${index}`} logo={logo} />
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Row 2: Scrolls right to left */}
+      <div className="relative w-full overflow-hidden">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+        <motion.div
+          className="flex items-center"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 18,
+              ease: "linear",
+            },
+          }}
+        >
+          {row2Items.map((logo, index) => (
+            <LogoItem key={`row2-${logo.id}-${index}`} logo={logo} />
           ))}
         </motion.div>
       </div>

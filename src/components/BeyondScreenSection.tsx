@@ -88,7 +88,7 @@ export function BeyondScreenSection() {
             {loading ? (
               <div className="flex gap-6 animate-pulse">
                 {[1, 2, 3].map(n => (
-                  <div key={n} className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] aspect-[3/2] bg-white/5 rounded-2xl" />
+                  <div key={n} className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] aspect-[3/2] bg-white/5 rounded-none" />
                 ))}
               </div>
             ) : images.length > 0 ? (
@@ -106,7 +106,7 @@ export function BeyondScreenSection() {
                       transition={{ duration: 0.5 }}
                       className="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)]"
                     >
-                      <div className="relative aspect-[3/2] rounded-2xl overflow-hidden group">
+                      <div className="relative aspect-[3/2] rounded-none overflow-hidden group">
                         <Image
                           src={image.image_url}
                           alt={image.title || "Gallery image"}

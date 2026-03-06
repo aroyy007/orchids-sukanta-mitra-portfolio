@@ -124,7 +124,7 @@ export function HeroSection() {
           fill
           className="object-cover object-center"
           priority
-          sizes="100vw"
+          sizes="80vw"
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-[#050d1d]/60" />
@@ -139,30 +139,8 @@ export function HeroSection() {
         <div className="absolute top-0 right-0 w-[200px] sm:w-[300px] md:w-[400px] h-[200px] sm:h-[300px] md:h-[400px] bg-[#0a2040]/40 rounded-full blur-[60px] md:blur-[100px]" />
       </div>
 
-      <div className="absolute top-24 sm:top-32 right-8 sm:right-16 md:right-24 lg:right-32 hidden md:block z-[2]">
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
-          <svg width="40" height="40" className="md:w-[50px] md:h-[50px] lg:w-[60px] lg:h-[60px]" viewBox="0 0 60 60" fill="none">
-            <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33" />
-          </svg>
-        </motion.div>
-      </div>
-      <div className="absolute top-36 sm:top-48 right-4 sm:right-12 md:right-16 lg:right-20 hidden md:block z-[2]">
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-        >
-          <svg width="20" height="20" className="md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]" viewBox="0 0 60 60" fill="none">
-            <path d="M30 0L33 27L60 30L33 33L30 60L27 33L0 30L27 27L30 0Z" fill="#CAFF33" />
-          </svg>
-        </motion.div>
-      </div>
 
-      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 md:pt-28 z-[2]">
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-20 pt-20 sm:pt-24 md:pt-28 z-[2]">
         <div className="flex flex-col lg:grid lg:grid-cols-[4fr_4fr_2fr] gap-4 sm:gap-6 md:gap-8 lg:gap-6 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -249,7 +227,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative flex justify-center z-0 order-1 lg:order-2 w-full"
           >
-            <div className="relative w-[240px] h-[320px] sm:w-[280px] sm:h-[380px] md:w-[320px] md:h-[430px] lg:w-[360px] lg:h-[500px] xl:w-[420px] xl:h-[600px]">
+            <div className="relative w-[270px] h-[360px] sm:w-[310px] sm:h-[420px] md:w-[360px] md:h-[480px] lg:w-[400px] lg:h-[550px] xl:w-[470px] xl:h-[660px]">
               <Image
                 src="/heroimg.png"
                 alt="Sukanta Mitra - Visual Communication Designer"
@@ -270,9 +248,24 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="flex flex-row lg:flex-col justify-center gap-6 sm:gap-8 lg:gap-10 z-10 order-3 w-full lg:w-auto"
           >
-            <div className="text-center lg:text-right">
-              <CountUpNumber end={6} suffix="+" />
-              <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">YEARS OF<br className="hidden lg:block" /> EXPERIENCE</p>
+            <div className="flex flex-col items-center lg:items-end">
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="relative w-[80px] h-[80px] mb-2 hidden lg:block"
+              >
+                <Image
+                  src="/star.png"
+                  alt="Star icon"
+                  fill
+                  className="object-contain"
+                />
+              </motion.div>
+              <div className="text-center lg:text-right">
+                <CountUpNumber end={6} suffix="+" />
+                <p className="font-krub text-white/70 text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide uppercase mt-1">YEARS OF<br className="hidden lg:block" /> EXPERIENCE</p>
+              </div>
             </div>
             <div className="text-center lg:text-right">
               <CountUpNumber end={375} suffix="+" />
@@ -296,7 +289,7 @@ export function HeroSection() {
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 20,
+                duration: 35,
                 ease: "linear",
               },
             }}

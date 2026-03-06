@@ -98,11 +98,11 @@ export function LifeWorkSection() {
           ) : galleryItems.length > 0 ? (
             <CircularGallery
               items={galleryItems}
-              bend={3}
-              textColor="#CAFF33"
+              textColor="#ffffff"
+              bend={0}
               borderRadius={0.05}
-              scrollSpeed={1.5}
-              scrollEase={0.01}
+              scrollSpeed={2}
+              scrollEase={0.05}
               font="bold 24px Krub"
             />
           ) : (

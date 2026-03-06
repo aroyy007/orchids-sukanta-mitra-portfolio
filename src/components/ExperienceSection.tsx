@@ -141,7 +141,7 @@ export function ExperienceSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-5 sm:space-y-6 bg-[#161616] rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 border border-white/5"
+            className="space-y-5 sm:space-y-6 lg:space-y-0 lg:flex lg:flex-col lg:justify-between h-full bg-[#161616] rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 border border-white/5"
           >
             {skills.map((skill, index) => (
               <motion.div

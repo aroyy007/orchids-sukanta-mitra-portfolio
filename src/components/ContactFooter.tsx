@@ -9,11 +9,11 @@ export function ContactFooter() {
   return (
     <footer className="bg-[#0D0D0D]">
       {/* Tea Section */}
-      <div className="relative overflow-hidden py-8 sm:py-10 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#f5f5f5]">
+      <div className="relative overflow-hidden py-2 sm:py-3 md:py-4 lg:py-6 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#f5f5f5]">
         {/* Background Repeating Text */}
         <div className="absolute inset-0 overflow-hidden select-none pointer-events-none flex flex-col justify-center">
           <div className="whitespace-nowrap opacity-[0.04]">
-            {[1, 2, 3, 4].map((i) => (
+            {[1, 2, 3].map((i) => (
               <div
                 key={i}
                 className="font-anton text-[40px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[120px] font-normal leading-tight tracking-tighter text-[#1a2744]"
@@ -25,59 +25,46 @@ export function ContactFooter() {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto">
-          {/* Main Content - Centered */}
-          <div className="flex flex-col items-center text-center">
-            <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 md:gap-6 mb-3 sm:mb-4 flex-nowrap">
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="font-anton text-2xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-normal text-[#1a2744] leading-[0.95] tracking-tight text-right"
-              >
-                LET'S CHAT OVER TEA!
-              </motion.h2>
+          <div className="flex flex-col items-center text-center relative">
+            {/* Title */}
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="font-anton text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-normal text-[#1a2744] leading-[0.9] tracking-tight"
+            >
+              LET&rsquo;S CHAT OVER TEA!
+            </motion.h2>
 
-              {/* Tea Cups - Side by Side on Desktop */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="flex items-end relative shrink-0"
-              >
-                {/* First Tea Cup (slightly behind and rotated left) */}
-                <div className="relative w-[30px] h-[40px] sm:w-[45px] sm:h-[60px] md:w-[75px] md:h-[100px] lg:w-[90px] lg:h-[120px] -rotate-12 -mr-2 sm:-mr-3 md:-mr-6">
-                  <Image
-                    src="/tea.png"
-                    alt="Tea cup"
-                    fill
-                    className="object-contain drop-shadow-lg"
-                  />
-                </div>
-                {/* Second Tea Cup (front, slightly rotated right) */}
-                <div className="relative w-[35px] h-[50px] sm:w-[50px] sm:h-[70px] md:w-[90px] md:h-[120px] lg:w-[105px] lg:h-[140px] rotate-6 z-10">
-                  <Image
-                    src="/tea.png"
-                    alt="Tea cup"
-                    fill
-                    className="object-contain drop-shadow-xl"
-                  />
-                </div>
-              </motion.div>
-            </div>
-
+            {/* Email */}
             <motion.a
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               href="mailto:helloatmitra@gmail.com"
-              className="font-krub text-base sm:text-lg md:text-xl lg:text-2xl text-[#1a2744]/70 hover:text-[#1a2744] transition-colors duration-300 font-medium italic"
+              className="font-krub text-base sm:text-lg md:text-xl lg:text-2xl text-[#1a2744]/70 hover:text-[#1a2744] transition-colors duration-300 font-medium italic mt-2 sm:mt-3"
               whileHover={{ scale: 1.02 }}
             >
               helloatmitra@gmail.com
             </motion.a>
+
+            {/* Tea cups image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative w-[170px] h-[145px] sm:w-[240px] sm:h-[205px] md:w-[340px] md:h-[290px] lg:w-[420px] lg:h-[360px] mt-[-30px] sm:mt-[-45px] md:mt-[-60px] lg:mt-[-80px]"
+            >
+              <Image
+                src="/teaa.png"
+                alt="Two tea cups"
+                fill
+                className="object-contain drop-shadow-xl"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
