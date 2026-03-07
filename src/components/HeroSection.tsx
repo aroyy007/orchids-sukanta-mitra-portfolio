@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import Image from "next/image";
+import Marquee from "react-fast-marquee";
 
 function TypewriterText({
   text,
@@ -281,29 +282,16 @@ export function HeroSection() {
 
       {/* Scrolling Banner */}
       <div className="relative bg-[#CAFF33] py-4 sm:py-5 md:py-6 overflow-hidden">
-        <div className="flex whitespace-nowrap">
-          <motion.div
-            className="flex items-center"
-            animate={{ x: [0, "-50%"] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 35,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...services, ...services, ...services, ...services].map((service, index) => (
-              <div key={index} className="flex items-center">
-                <span className="font-anton text-4xl sm:text-5xl md:text-5xl lg:text-5xl font-normal text-[#0a1628] px-4 md:px-8 uppercase">
-                  {service}
-                </span>
-                <span className="text-[#0a1628] text-base sm:text-xl md:text-xl mx-2 sm:mx-4">✦</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        <Marquee speed={50} autoFill={true} gradient={false}>
+          {services.map((service, index) => (
+            <div key={index} className="flex items-center whitespace-nowrap">
+              <span className="font-anton text-4xl sm:text-5xl md:text-5xl lg:text-5xl font-normal text-[#0a1628] px-4 md:px-8 uppercase">
+                {service}
+              </span>
+              <span className="text-[#0a1628] text-base sm:text-xl md:text-xl mx-2 sm:mx-4">✦</span>
+            </div>
+          ))}
+        </Marquee>
       </div>
     </section>
   );
