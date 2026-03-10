@@ -4,26 +4,20 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import Image from "next/image";
 
-// Row 1: 7 logos (British Council + first 6 PNGs)
+// Row 1: 5 logos (British Council + first 4 PNGs)
 const row1Logos = [
   { id: "bc", name: "British Council", type: "component" as const },
-  { id: "undrr", name: "UNDRR", type: "image" as const, src: "/collaboration/undrr.png" },
   { id: "palnetwork", name: "PAL Network", type: "image" as const, src: "/collaboration/palnetwork.png" },
   { id: "unitednations", name: "United Nations", type: "image" as const, src: "/collaboration/unitednations.png" },
-  { id: "brac", name: "BRAC", type: "image" as const, src: "/collaboration/brac.png" },
   { id: "bracuni", name: "BRAC University", type: "image" as const, src: "/collaboration/bracuni.png" },
   { id: "wateraid", name: "WaterAid", type: "image" as const, src: "/collaboration/wateraid.png" },
 ];
 
-// Row 2: 7 logos (remaining PNGs)
+// Row 2: 3 logos (remaining PNGs)
 const row2Logos = [
   { id: "cs", name: "CS", type: "image" as const, src: "/collaboration/cs.png" },
-  { id: "iid", name: "IID", type: "image" as const, src: "/collaboration/iid.jpg" },
   { id: "law", name: "Law", type: "image" as const, src: "/collaboration/law.png" },
-  { id: "lego", name: "LEGO", type: "image" as const, src: "/collaboration/lego.jpg" },
-  { id: "ministryofcivil", name: "Ministry of Civil", type: "image" as const, src: "/collaboration/ministryofcivil.png" },
   { id: "ministryofplanning", name: "Ministry of Planning", type: "image" as const, src: "/collaboration/ministryofplanning.png" },
-  { id: "youth", name: "Youth", type: "image" as const, src: "/collaboration/youth.png" },
 ];
 
 function BritishCouncilLogo() {
