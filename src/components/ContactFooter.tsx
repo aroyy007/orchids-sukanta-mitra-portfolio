@@ -136,10 +136,10 @@ export function ContactFooter() {
               </h4>
               <div className="flex gap-3 sm:gap-4 justify-center sm:justify-start md:justify-end">
                 {[
-                  { icon: <FaLinkedinIn className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "LinkedIn" },
-                  { icon: <FaBehance className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "Behance" },
-                  { icon: <FaFacebookF className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "Facebook" },
-                  { icon: <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />, href: "#", label: "Instagram" },
+                  { icon: <FaLinkedinIn className="w-4 h-4 sm:w-5 sm:h-5" />, href: "https://www.linkedin.com/in/sukantamitra", label: "LinkedIn" },
+                  { icon: <FaBehance className="w-4 h-4 sm:w-5 sm:h-5" />, href: "https://www.behance.net/sukantamitrasm", label: "Behance" },
+                  { icon: <FaFacebookF className="w-4 h-4 sm:w-5 sm:h-5" />, href: "https://www.facebook.com/share/18TVKtTgxU/", label: "Facebook" },
+                  { icon: <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />, href: "https://www.instagram.com/visual_epitome", label: "Instagram" },
                 ].map(({ icon, href, label }) => (
                   <motion.a
                     key={label}

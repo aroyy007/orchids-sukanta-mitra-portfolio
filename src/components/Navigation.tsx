@@ -13,10 +13,10 @@ const navItems = [
 ];
 
 const socialIcons = [
-  { icon: <FaLinkedinIn size={12} />, href: "#" },
-  { icon: <FaBehance size={12} />, href: "#" },
-  { icon: <FaFacebookF size={12} />, href: "#" },
-  { icon: <FaInstagram size={12} />, href: "#" },
+  { icon: <FaLinkedinIn size={12} />, href: "https://www.linkedin.com/in/sukantamitra" },
+  { icon: <FaBehance size={12} />, href: "https://www.behance.net/sukantamitrasm" },
+  { icon: <FaFacebookF size={12} />, href: "https://www.facebook.com/share/18TVKtTgxU/" },
+  { icon: <FaInstagram size={12} />, href: "https://www.instagram.com/visual_epitome" },
 ];
 
 export function Navigation() {
