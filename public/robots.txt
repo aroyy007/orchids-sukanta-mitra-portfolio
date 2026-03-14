@@ -4,7 +4,7 @@ Allow: /
 
 # Sitemap location
 # TODO: Add your domain after deployment
-# Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://sukanta-mitra.vercel.app/sitemap.xml
 
 # Disallow admin or private paths (if any)
 # User-agent: *

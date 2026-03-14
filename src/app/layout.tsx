@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Sukanta Mitra" }],
   creator: "Sukanta Mitra",
   publisher: "Sukanta Mitra",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://sukanta-mitra.vercel.app'),
   alternates: {
     canonical: '/',
   },
@@ -62,11 +62,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
-  },
+  // verification: {
+  //   google: 'your-google-verification-code',
+  //   yandex: 'your-yandex-verification-code',
+  //   bing: 'your-bing-verification-code',
+  // },
 };
 
 export default function RootLayout({
