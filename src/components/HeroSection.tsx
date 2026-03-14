@@ -254,7 +254,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="relative w-[80px] h-[80px] mb-2 hidden lg:block"
+                className="relative w-[150px] h-[150px] mb-2 hidden lg:block"
               >
                 <Image
                   src="/star.png"
