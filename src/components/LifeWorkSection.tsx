@@ -78,9 +78,9 @@ export function LifeWorkSection() {
   };
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-[#1a2744]">
+    <section className="pt-[30px] pb-[30px] bg-[#1a2744]">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-10 lg:px-12">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-3 md:mb-4">
           <div className="inline-flex items-center gap-2 text-[#CAFF33] text-sm font-medium mb-4">
             <Sparkles className="w-4 h-4" />
             <span className="font-krub">LIFE & WORK</span>
@@ -90,7 +90,7 @@ export function LifeWorkSection() {
           </h2>
         </div>
 
-        <div className="relative mb-24 md:mb-32 w-full" style={{ height: 'min(600px, 70vh)' }}>
+        <div className="relative mb-4 md:mb-5 w-full" style={{ height: 'min(600px, 70vh)' }}>
           {loadingGallery ? (
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-12 h-12 border-4 border-[#CAFF33]/30 border-t-[#CAFF33] rounded-full animate-spin" />
