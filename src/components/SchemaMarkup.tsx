@@ -13,10 +13,10 @@ export function SchemaMarkup() {
       "addressRegion": "South Asia"
     },
     "sameAs": [
-      "https://linkedin.com/in/yourprofile",
-      "https://instagram.com/yourprofile",
-      "https://dribbble.com/yourprofile",
-      "https://facebook.com/yourprofile"
+      "https://www.linkedin.com/in/sukantamitra",
+      "https://www.instagram.com/visual_epitome",
+      "https://www.behance.net/sukantamitrasm",
+      "https://www.facebook.com/share/18TVKtTgxU/"
     ],
     "knowsAbout": [
       "Graphic Design",
