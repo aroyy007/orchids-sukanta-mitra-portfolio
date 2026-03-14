@@ -81,9 +81,9 @@ export function ContactFooter() {
               className="text-center sm:text-left"
             >
               <h3
-                className="font-anton text-lg sm:text-xl text-white mb-1 tracking-tight"
+                className="font-anton text-lg sm:text-xl text-[#CAFF33] mb-1 tracking-tight"
               >
-                SUKANTA MITRA
+                SUKANTA MITRA 
               </h3>
               <p
                 className="font-krub text-white/40 text-xs sm:text-sm tracking-widest uppercase"
