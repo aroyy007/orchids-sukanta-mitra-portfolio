@@ -125,7 +125,7 @@ export function HeroSection() {
           fill
           className="object-cover object-center"
           priority
-          sizes="80vw"
+          sizes="100vw"
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-[#050d1d]/60" />
